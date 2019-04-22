@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Parque de Diversiones</title>
+    <title>Proyecto Final</title>
     <style>
       canvas {
         width: 100%;
@@ -168,9 +168,21 @@
       var yellowMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("yellowMetal.jpg")});
       var redMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redMetal.jpg")});
       var purpleMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("purpleMetal.jpg")});
+      var whiteMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("whiteMetal.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
+      
+      //Estadio Bombonera Toluca (Nemesio Diez)
+
+      var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
+      
+      var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
+
+      paredBlanca.position.y = 100;
+      paredBlanca.position.z = 250;
+
+      scene.add(paredBlanca);
 
       //Grupos coche--------------------------------------------------------------------------------------------
       llanta1 = new THREE.Object3D();
