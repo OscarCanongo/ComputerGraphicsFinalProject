@@ -176,13 +176,26 @@
       //Estadio Bombonera Toluca (Nemesio Diez)
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
+      var rectanguloRojo = new THREE.BoxGeometry(100, 300, 50);
       
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
+      var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
+      var paredRoja2 = new THREE.Mesh(rectanguloRojo, redMetal);
 
-      paredBlanca.position.y = 100;
+      paredBlanca.position.y = 90;
       paredBlanca.position.z = 250;
 
+      paredRoja.position.y = 140;
+      paredRoja.position.z = 250;
+      paredRoja.position.x = 350;
+
+      paredRoja2.position.y = 140;
+      paredRoja2.position.z = 250;
+      paredRoja2.position.x = -350;
+
       scene.add(paredBlanca);
+      scene.add(paredRoja);
+      scene.add(paredRoja2);
 
       //Grupos coche--------------------------------------------------------------------------------------------
       llanta1 = new THREE.Object3D();
