@@ -71,12 +71,13 @@
             break;
 
           //Entiere Arm
-          case 84:  /* T was pressed */
+          case 84:  /* T was pressed  go forward */
             xposCoche +=1;
             rotarLlantas -= 0.1;        
             break; 
-          case 71:  /* G was pressed */
-            rotEntiereArm -= 0.1;         
+          case 71:  /* G was pressed  go back */
+            xposCoche -=1;
+            rotarLlantas += 0.1;          
             break; 
           case 82:  /* R was pressed */
            if(rotXEntiereArm<0.9)
