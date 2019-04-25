@@ -28,6 +28,7 @@
       var zz = 0.0;
       var angle = 0;
       var zposCoche=600;
+      var zrotCoche=0;
       var xposCoche=0;
       var angleCoche=0;
       var rotarLlantas=0;
@@ -70,18 +71,24 @@
             ypos += 0.05;         
             break;
 
-          //Entiere Arm
+          //Coche
           case 84:  /* T was pressed  go forward */
-            xposCoche +=1;
+            xposCoche= (xposCoche+(2*Math.cos(angleCoche)));
+            zposCoche= (zposCoche-(2*Math.sin(angleCoche)));  
+            zrotCoche+=angleCoche;
             rotarLlantas -= 0.1;        
             break; 
           case 71:  /* G was pressed  go back */
             xposCoche -=1;
             rotarLlantas += 0.1;          
+            break;
+          case 72:  /* H was pressed */
+            if(angleCoche>-1)
+            angleCoche -= (0.01);         
             break; 
           case 82:  /* R was pressed */
            if(rotXEntiereArm<0.9)
-            rotXEntiereArm += 0.1;         
+            rotXEntiereArm += 0.1         
             break; 
           case 70:  /* F was pressed */
           if(rotXEntiereArm>-0.9)
@@ -90,9 +97,7 @@
           case 89:  /* Y was pressed */
              rotXForeArm += (0.05);         
             break; 
-          case 72:  /* H was pressed */
-            rotXForeArm -= (0.05);         
-            break; 
+           
           //Manita
           case 73://U
             if(openFinger<1.5 && openFinger2>-1.5){
@@ -755,10 +760,13 @@
         //Llantas
         coche.position.z=zposCoche;
         coche.position.x=xposCoche;
+        //coche.rotation.y=zrotCoche;
         llanta1.rotation.z=rotarLlantas;
         llanta2.rotation.z=rotarLlantas;
         llanta3.rotation.z=rotarLlantas;
         llanta4.rotation.z=rotarLlantas;
+        llanta1.rotation.y=angleCoche;
+        llanta2.rotation.y=angleCoche;
         renderer.render(scene, camera);
       };
       render();
