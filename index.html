@@ -73,13 +73,17 @@
 
           //Coche
           case 84:  /* T was pressed  go forward */
-            xposCoche= (xposCoche+(2*Math.cos(angleCoche)));
-            zposCoche= (zposCoche-(2*Math.sin(angleCoche)));  
-            zrotCoche+=angleCoche;
+           coche.position.x += (Math.cos(coche.rotation.y)*2);
+           coche.position.z -= (Math.sin(coche.rotation.y)*2);
+           coche.rotation.y += llanta1.rotation.y * 0.09;
+           coche.rotation.y += llanta2.rotation.y * 0.09;
             rotarLlantas -= 0.1;        
             break; 
           case 71:  /* G was pressed  go back */
-            xposCoche -=1;
+           coche.position.x -= (Math.cos(coche.rotation.y)*2);
+           coche.position.z += (Math.sin(coche.rotation.y)*2);
+           coche.rotation.y -= llanta1.rotation.y * 0.09;
+           coche.rotation.y -= llanta2.rotation.y * 0.09;
             rotarLlantas += 0.1;          
             break;
           case 72:  /* H was pressed */
@@ -720,6 +724,9 @@
       var e=1;
       var f=1;
 
+      coche.position.z=zposCoche;
+        coche.position.x=xposCoche;
+
       var render = function() {
         requestAnimationFrame(render);
         camera.position.z = zpos; 
@@ -758,8 +765,6 @@
 
         //Coche
         //Llantas
-        coche.position.z=zposCoche;
-        coche.position.x=xposCoche;
         //coche.rotation.y=zrotCoche;
         llanta1.rotation.z=rotarLlantas;
         llanta2.rotation.z=rotarLlantas;
