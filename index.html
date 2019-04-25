@@ -133,7 +133,7 @@
 
       // create a new geometry
       var geom = new THREE.Geometry();
-      var floor = new THREE.BoxGeometry( 1500, 10, 1500 );
+      var floor = new THREE.BoxGeometry( 1500, 10, 2500 );
       var baseStructure = new THREE.CylinderGeometry(5,5,100,100);
       var tuboAcostado = new THREE.CylinderGeometry(15,15,60,100);
       var tuboRueda = new THREE.CylinderGeometry(8,2,55);
@@ -169,33 +169,214 @@
       var redMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redMetal.jpg")});
       var purpleMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("purpleMetal.jpg")});
       var whiteMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("whiteMetal.jpg")});
+      var adornoMaterial = new THREE.MeshLambertMaterial({
+        color: 0xffffff,
+        wireframe: true
+      });
+      var escudo = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("escudo.jpg")});
+
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
       
-      //Estadio Bombonera Toluca (Nemesio Diez)
+      //Estadio Bombonera Toluca (Nemesio Diez) -----------------------------------------------------------------------
+
+      bombonera = new THREE.Object3D();
+      pared1 = new THREE.Object3D();
+      baras1 = new THREE.Object3D();
+      rejita = new THREE.Object3D();
+      pared2 = new THREE.Object3D();
+      pared3 = new THREE.Object3D();
+      pared4 = new THREE.Object3D();
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
       var rectanguloRojo = new THREE.BoxGeometry(100, 300, 50);
-      
+      var barasAdorno = new THREE.BoxGeometry(10, 100, 10);
+      var estructuraBlanca = new THREE.BoxGeometry(600,2,50);
+      var wBlanco = new THREE.BoxGeometry(40,60,20);
+      var toluca = new THREE.BoxGeometry(100,100,5);
+      var pb = new THREE.BoxGeometry(600,300,50);
+      var pb2 = new THREE.BoxGeometry(750,300,50);
+      //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
       var paredRoja2 = new THREE.Mesh(rectanguloRojo, redMetal);
+      var escudoTol = new THREE.Mesh(toluca, escudo);
+      //Baras -----------------------------------------------------------------------------------------
+      var bara = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara2 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara3 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara4 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara5 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara6 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara7 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara8 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara9 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara10 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara11 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara12 = new THREE.Mesh(barasAdorno, whiteMetal);
+      var bara13 = new THREE.Mesh(barasAdorno, whiteMetal);
+      //Rejitas --------------------------------------------------------------------------------------------
+      var estructuraB = new THREE.Mesh(estructuraBlanca, whiteMetal);
+      var wireframeB = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB2 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB3 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB4 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB5 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB6 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB7 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB8 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB9 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB10 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB11 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB12 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB13 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB14 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB15 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB16 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB17 = new THREE.Mesh(wBlanco, adornoMaterial);
+      var wireframeB18 = new THREE.Mesh(wBlanco, adornoMaterial);
+      //Pared 2 -----------------------------------------------------------------------------------------------
+      var paredb = new THREE.Mesh(pb, whiteMetal);
+      var paredRoja3 = new THREE.Mesh(rectanguloRojo, redMetal);
+      var paredRoja4 = new THREE.Mesh(rectanguloRojo, redMetal);
+      //Pared 3 ----------------------------------------------------------------------------------------------
+      var paredb2 = new THREE.Mesh(pb2,whiteMetal);
+      //Pared 4 -----------------------------------------------------------------------------------------------
+      var paredb3 = new THREE.Mesh(pb2,whiteMetal);
+      //Posiciones --------------------------------------------------------------------------------------------
+      paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
-      paredBlanca.position.y = 90;
-      paredBlanca.position.z = 250;
+      paredRoja.position.y = 140; paredRoja.position.z = 250; paredRoja.position.x = 350;
 
-      paredRoja.position.y = 140;
-      paredRoja.position.z = 250;
-      paredRoja.position.x = 350;
+      paredRoja2.position.y = 140; paredRoja2.position.z = 250; paredRoja2.position.x = -350;
 
-      paredRoja2.position.y = 140;
-      paredRoja2.position.z = 250;
-      paredRoja2.position.x = -350;
+      bara.position.y = 240; bara.position.z = 260; bara.position.x = 240;
 
-      scene.add(paredBlanca);
-      scene.add(paredRoja);
-      scene.add(paredRoja2);
+      bara2.position.y = 240; bara2.position.z = 260; bara2.position.x = -240;
+
+      bara3.position.y = 240; bara3.position.z = 260; bara3.position.x = 200;
+      
+      bara4.position.y = 240; bara4.position.z = 260; bara4.position.x = -200;
+
+      bara5.position.y = 240; bara5.position.z = 260; bara5.position.x = 160;
+
+      bara6.position.y = 240; bara6.position.z = 260; bara6.position.x = -160;
+
+      bara7.position.y = 240; bara7.position.z = 260; bara7.position.x = 120;
+
+      bara8.position.y = 240; bara8.position.z = 260; bara8.position.x = -120;
+      
+      bara9.position.y = 240; bara9.position.z = 260; bara9.position.x = 80;
+
+      bara10.position.y = 240; bara10.position.z = 260; bara10.position.x = -80;
+
+      bara11.position.y = 240; bara11.position.z = 260; bara11.position.x = 40;
+
+      bara12.position.y = 240; bara12.position.z = 260; bara12.position.x = -40;
+
+      bara13.position.y = 240; bara13.position.z = 260; bara13.position.x = 0;
+
+      estructuraB.position.y = 290; estructuraB.position.z = 250; estructuraB.position.x = 0;
+
+      wireframeB.position.y = 320; wireframeB.position.z = 250; wireframeB.position.x = 300;
+      
+      wireframeB2.position.y = 320; wireframeB2.position.z = 250; wireframeB2.position.x = 260;
+      
+      wireframeB3.position.y = 320; wireframeB3.position.z = 250; wireframeB3.position.x = 220;
+      
+      wireframeB4.position.y = 320; wireframeB4.position.z = 250; wireframeB4.position.x = -220;
+      
+      wireframeB5.position.y = 320; wireframeB5.position.z = 250; wireframeB5.position.x = -260;
+      
+      wireframeB6.position.y = 320; wireframeB6.position.z = 250; wireframeB6.position.x = -300;
+      
+      wireframeB7.position.y = 320; wireframeB7.position.z = 250; wireframeB7.position.x = 180;
+      
+      wireframeB8.position.y = 320; wireframeB8.position.z = 250; wireframeB8.position.x = -180;
+      
+      wireframeB9.position.y = 320; wireframeB9.position.z = 250; wireframeB9.position.x = 140;
+      
+      wireframeB10.position.y = 320; wireframeB10.position.z = 250; wireframeB10.position.x = -140;
+      
+      wireframeB11.position.y = 320; wireframeB11.position.z = 250; wireframeB11.position.x = 100;
+      
+      wireframeB12.position.y = 320; wireframeB12.position.z = 250; wireframeB12.position.x = -100;
+      
+      wireframeB13.position.y = 320; wireframeB13.position.z = 250; wireframeB13.position.x = 60;
+      
+      wireframeB14.position.y = 320; wireframeB14.position.z = 250; wireframeB14.position.x = -60;
+      
+      wireframeB15.position.y = 320; wireframeB15.position.z = 250; wireframeB15.position.x = 20;
+      
+      wireframeB16.position.y = 320; wireframeB16.position.z = 250; wireframeB16.position.x = -20;
+      
+      wireframeB17.position.y = 320; wireframeB17.position.z = 250; wireframeB17.position.x = 340;
+      
+      wireframeB18.position.y = 320; wireframeB18.position.z = 250; wireframeB18.position.x = -340;
+
+      escudoTol.position. y = 100; escudoTol.position.z = 225; escudoTol.position.x = 0; escudoTol.rotation.x = 3.1416;
+
+      paredb.position.y = 140; paredb.position.z = 1000; paredb.position.x = 0;
+      
+      paredRoja3.position.y = 140; paredRoja3.position.z = 1000; paredRoja3.position.x = 350;
+
+      paredRoja4.position.y = 140; paredRoja4.position.z = 1000; paredRoja4.position.x = -350;
+
+      paredb2.position.y = 140; paredb2.position.z = 630; paredb2.position.x = 420; paredb2.rotation.y = 3.1416/2;
+      
+      paredb3.position.y = 140; paredb3.position.z = 630; paredb3.position.x = -420; paredb3.rotation.y = 3.1416/2;
+
+      pared1.add(paredBlanca);
+      pared1.add(paredRoja);
+      pared1.add(paredRoja2);
+      pared1.add(escudoTol);
+      baras1.add(bara);
+      baras1.add(bara2);
+      baras1.add(bara3);
+      baras1.add(bara4);
+      baras1.add(bara5);
+      baras1.add(bara6);
+      baras1.add(bara7);
+      baras1.add(bara8);
+      baras1.add(bara9);
+      baras1.add(bara10);
+      baras1.add(bara11);
+      baras1.add(bara12);
+      baras1.add(bara13);
+      rejita.add(estructuraB);
+      rejita.add(wireframeB);
+      rejita.add(wireframeB2);
+      rejita.add(wireframeB3);
+      rejita.add(wireframeB4);
+      rejita.add(wireframeB5);
+      rejita.add(wireframeB6);
+      rejita.add(wireframeB7);
+      rejita.add(wireframeB8);
+      rejita.add(wireframeB9);
+      rejita.add(wireframeB10);
+      rejita.add(wireframeB11);
+      rejita.add(wireframeB12);
+      rejita.add(wireframeB13);
+      rejita.add(wireframeB14);
+      rejita.add(wireframeB15);
+      rejita.add(wireframeB16);
+      rejita.add(wireframeB17);
+      rejita.add(wireframeB18);
+      pared2.add(paredb); 
+      pared2.add(paredRoja3);
+      pared2.add(paredRoja4);
+      pared3.add(paredb2);
+      pared4.add(paredb3);
+
+      bombonera.add(pared1);
+      bombonera.add(baras1);
+      bombonera.add(rejita);
+      bombonera.add(pared2);
+      bombonera.add(pared3);
+      bombonera.add(pared4);
+
+      scene.add(bombonera);
 
       //Grupos coche--------------------------------------------------------------------------------------------
       llanta1 = new THREE.Object3D();
