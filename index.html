@@ -180,6 +180,9 @@
       var redMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redMetal.jpg")});
       var purpleMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("purpleMetal.jpg")});
       var whiteMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("whiteMetal.jpg")});
+      var glassTexture = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("glassTexture.jpg"),
+        transparent: true, 
+        opacity: 0.5});
       var adornoMaterial = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         wireframe: true
@@ -203,6 +206,7 @@
       futField = new THREE.Object3D();
       goal1 = new THREE.Object3D();
       goal2 = new THREE.Object3D();
+      palco = new THREE.Object3D();
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
       var rectanguloRojo = new THREE.BoxGeometry(100, 300, 50);
@@ -215,6 +219,9 @@
       var cancha = new THREE.BoxGeometry(500, 400, 5);
       var tuboVertical = new THREE.CylinderGeometry(2,2,50,100);
       var tuboHorizontal = new THREE.CylinderGeometry(2,2,120,100);
+      var pisoP = new THREE.BoxGeometry(100,5,80);
+      var glassP = new THREE.BoxGeometry(100,30,2);
+      var glassP2 = new THREE.BoxGeometry(80,30,2);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -264,14 +271,18 @@
       var paredb3 = new THREE.Mesh(pb2,whiteMetal);
       //Cancha ------------------------------------------------------------------------------------------------
       var field = new THREE.Mesh(cancha,futbol);
-      //Porteria 1
+      //Porteria 1 --------------------------------------------------------------------------------------------
       var futTubo = new THREE.Mesh(tuboVertical, metal);
       var futTubo2 = new THREE.Mesh(tuboVertical, metal);
       var futTubo5 = new THREE.Mesh(tuboHorizontal, metal);
-      //Porteria 2
+      //Porteria 2 --------------------------------------------------------------------------------------------
       var futTubo3 = new THREE.Mesh(tuboVertical, metal);
       var futTubo4 = new THREE.Mesh(tuboVertical, metal);
       var futTubo6 = new THREE.Mesh(tuboHorizontal, metal);
+      //Palco -------------------------------------------------------------------------------------------------
+      var floorPalco = new THREE.Mesh(pisoP, redMetal);
+      var glassPalco = new THREE.Mesh(glassP, glassTexture);
+      var glassPalco2 = new THREE.Mesh(glassP2, glassTexture);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -369,6 +380,12 @@
 
       futTubo6.position.y = 43; futTubo6.position.z = 625; futTubo6.position.x = -190; futTubo6.rotation.x = 3.1416/2;
 
+      floorPalco.position.y = 150; floorPalco.position.z = 320; floorPalco.position.x = 350;
+
+      glassPalco.position.y = 162; glassPalco.position.z = 361; glassPalco.position.x = 350;
+
+      glassPalco2.position.y = 162; glassPalco2.position.z = 320; glassPalco2.position.x = 300; glassPalco2.rotation.y = 3.1416/2;
+
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
       pared1.add(paredRoja2);
@@ -417,6 +434,9 @@
       goal2.add(futTubo3);
       goal2.add(futTubo4);
       goal2.add(futTubo6);
+      palco.add(floorPalco);
+      palco.add(glassPalco);
+      palco.add(glassPalco2);
 
       bombonera.add(pared1);
       bombonera.add(baras1);
@@ -427,6 +447,7 @@
       bombonera.add(futField);
       bombonera.add(goal1);
       bombonera.add(goal2);
+      bombonera.add(palco);
 
       scene.add(bombonera);
 
