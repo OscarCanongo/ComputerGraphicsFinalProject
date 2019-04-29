@@ -191,7 +191,7 @@
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
       
-      //Estadio Bombonera Toluca (Nemesio Diez) -----------------------------------------------------------------------
+      //Estadio Bombonera Toluca (Nemesio Diez) ---------------------------------------------------------------------------------------------------
 
       bombonera = new THREE.Object3D();
       pared1 = new THREE.Object3D();
@@ -213,8 +213,8 @@
       var pb = new THREE.BoxGeometry(600,300,50);
       var pb2 = new THREE.BoxGeometry(750,300,50);
       var cancha = new THREE.BoxGeometry(500, 400, 5);
-      var tuboVertical = new THREE.CylinderGeometry(5,5,20,100);
-      var tuboHorizontal = new THREE.CylinderGeometry(5,5,80,100);
+      var tuboVertical = new THREE.CylinderGeometry(2,2,50,100);
+      var tuboHorizontal = new THREE.CylinderGeometry(2,2,120,100);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -270,7 +270,7 @@
       var futTubo5 = new THREE.Mesh(tuboHorizontal, metal);
       //Porteria 2
       var futTubo3 = new THREE.Mesh(tuboVertical, metal);
-      var futTubo4 = new THREE.Mesh(tuboHorizontal, metal);
+      var futTubo4 = new THREE.Mesh(tuboVertical, metal);
       var futTubo6 = new THREE.Mesh(tuboHorizontal, metal);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
@@ -357,6 +357,18 @@
 
       field.position.y = -5; field.position.z = 625; field.position.x = 10; field.rotation.x = 3.1416/2;
 
+      futTubo.position.y = 20; futTubo.position.z = 685; futTubo.position.x = 212;
+
+      futTubo2.position.y = 20; futTubo2.position.z = 565; futTubo2.position.x = 212;
+
+      futTubo5.position.y = 43; futTubo5.position.z = 625; futTubo5.position.x = 212; futTubo5.rotation.x = 3.1416/2;
+
+      futTubo3.position.y = 20; futTubo3.position.z = 685; futTubo3.position.x = -190;
+
+      futTubo4.position.y = 20; futTubo4.position.z = 565; futTubo4.position.x = -190;
+
+      futTubo6.position.y = 43; futTubo6.position.z = 625; futTubo6.position.x = -190; futTubo6.rotation.x = 3.1416/2;
+
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
       pared1.add(paredRoja2);
@@ -399,6 +411,12 @@
       pared3.add(paredb2);
       pared4.add(paredb3);
       futField.add(field);
+      goal1.add(futTubo);
+      goal1.add(futTubo2);
+      goal1.add(futTubo5);
+      goal2.add(futTubo3);
+      goal2.add(futTubo4);
+      goal2.add(futTubo6);
 
       bombonera.add(pared1);
       bombonera.add(baras1);
@@ -407,6 +425,8 @@
       bombonera.add(pared3);
       bombonera.add(pared4);
       bombonera.add(futField);
+      bombonera.add(goal1);
+      bombonera.add(goal2);
 
       scene.add(bombonera);
 
