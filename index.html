@@ -189,6 +189,9 @@
       });
       var escudo = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("escudo.jpg")});
       var futbol = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("canchafut.jpg")});
+      var cementTexture = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("cementMaterial.jpg")});
+      var redPlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redPlastic.jpg")});
+      var bluePlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("bluePlastic.jpg")});
 
 
       var base = new THREE.Mesh(floor, pasto);
@@ -211,6 +214,9 @@
       palcoSeccion1 = new THREE.Object3D();
       palcoSeccion3 = new THREE.Object3D();
       techos = new THREE.Object3D();
+      gradas = new THREE.Object3D();
+      asientosSeccion1 = new THREE.Object3D();
+      asientoBase = new THREE.Object3D();
       
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
@@ -229,6 +235,14 @@
       var glassP2 = new THREE.BoxGeometry(50,30,2);
       var techoB = new THREE.BoxGeometry(800, 5, 155);
       var techoB2 = new THREE.BoxGeometry(155, 5, 600);
+      var baseGrada1 = new THREE.BoxGeometry(50,10,120);
+      var baseGrada2 = new THREE.BoxGeometry(50,10,100);
+      var baseGrada3 = new THREE.BoxGeometry(50,10,80);
+      var baseGrada4 = new THREE.BoxGeometry(50,10,60);
+      var baseGrada5 = new THREE.BoxGeometry(50,10,40);
+      var baseGrada6 = new THREE.BoxGeometry(50,10,20);
+      var asientoGrada = new THREE.BoxGeometry(10,2,8);
+      var respaldoGrada = new THREE.BoxGeometry(10,18,2);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -301,6 +315,15 @@
       var techo2 = new THREE.Mesh(techoB, whiteMetal);
       var techo3 = new THREE.Mesh(techoB2, whiteMetal);
       var techo4 = new THREE.Mesh(techoB2, whiteMetal);
+      //Gradas ------------------------------------------------------------------------------------------------
+      var grada1 = new THREE.Mesh(baseGrada1, cementTexture);
+      var grada2 = new THREE.Mesh(baseGrada2, cementTexture);
+      var grada3 = new THREE.Mesh(baseGrada3, cementTexture);
+      var grada4 = new THREE.Mesh(baseGrada4, cementTexture);
+      var grada5 = new THREE.Mesh(baseGrada5, cementTexture);
+      var grada6 = new THREE.Mesh(baseGrada6, cementTexture);
+      var asientoG1 = new THREE.Mesh(asientoGrada, redPlastic);
+      var respaldoG1 = new THREE.Mesh(respaldoGrada, redPlastic);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -422,6 +445,22 @@
 
       techo4.position.y = 288; techo4.position.z = 530; techo4.position.x = 320; 
 
+      grada1.position.y = 0; grada1.position.z = 335; grada1.position.x = 0;
+
+      grada2.position.y = 10; grada2.position.z = 325; grada2.position.x = 0;
+
+      grada3.position.y = 20; grada3.position.z = 315; grada3.position.x = 0;
+
+      grada4.position.y = 30; grada4.position.z = 305; grada4.position.x = 0;
+
+      grada5.position.y = 40; grada5.position.z = 295; grada5.position.x = 0;
+
+      grada6.position.y = 50; grada5.position.z = 295; grada5.position.x = 0;
+
+      asientoG1.position.y = 6; asientoG1.position.z = 379; asientoG1.position.x = 0;
+
+      respaldoG1.position.y = 6; respaldoG1.position.z = 376; respaldoG1.position.x = 0
+
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
       pared1.add(paredRoja2);
@@ -520,6 +559,41 @@
       techos.add(techo2);
       techos.add(techo3);
       techos.add(techo4);
+      gradas.add(grada1);
+      gradas.add(grada2);
+      gradas.add(grada3);
+      gradas.add(grada4);
+      gradas.add(grada5);
+      gradas.add(grada6);
+      asientoBase.add(asientoG1);
+      asientoBase.add(respaldoG1);
+      var asientoBase2 = asientoBase.clone();
+      var asientoBase3 = asientoBase.clone();
+      asientosSeccion1.add(asientoBase);
+      asientosSeccion1.add(asientoBase2);
+      asientosSeccion1.add(asientoBase3);
+      //---------------------------------
+      asientoBase2.position.x = 15;
+      asientoBase3.position.x = -15;
+      //---------------------------------
+      var asientosSeccion2 = asientosSeccion1.clone();
+      var asientosSeccion3 = asientosSeccion1.clone();
+      var asientosSeccion4 = asientosSeccion1.clone();
+      var asientosSeccion5 = asientosSeccion1.clone();
+      var asientosSeccion6 = asientosSeccion1.clone();
+      //---------------------------------
+      asientosSeccion2.position.y = 10; asientosSeccion2.position.z = -20;
+      asientosSeccion3.position.y = 20; asientosSeccion3.position.z = -40;
+      asientosSeccion4.position.y = 30; asientosSeccion4.position.z = -60;
+      asientosSeccion5.position.y = 40; asientosSeccion5.position.z = -78;
+      asientosSeccion6.position.y = 40; asientosSeccion6.position.z = -95;
+      //---------------------------------
+      gradas.add(asientosSeccion1);
+      gradas.add(asientosSeccion2);
+      gradas.add(asientosSeccion3);
+      gradas.add(asientosSeccion4);
+      gradas.add(asientosSeccion5);
+      gradas.add(asientosSeccion6);
 
       bombonera.add(pared1);
       bombonera.add(baras1);
@@ -535,6 +609,7 @@
       bombonera.add(palcoSeccion3);
       bombonera.add(palcoSeccion4);
       bombonera.add(techos);
+      bombonera.add(gradas);
 
       //Bombonera se agrega al scene ---------------------------------------------------------------------------
       scene.add(bombonera);
