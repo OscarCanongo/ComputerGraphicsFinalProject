@@ -217,6 +217,7 @@
       gradas = new THREE.Object3D();
       asientosSeccion1 = new THREE.Object3D();
       asientoBase = new THREE.Object3D();
+      gradasSeccion1 = new THREE.Object3D();
       
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
@@ -243,6 +244,8 @@
       var baseGrada6 = new THREE.BoxGeometry(50,10,20);
       var asientoGrada = new THREE.BoxGeometry(10,2,8);
       var respaldoGrada = new THREE.BoxGeometry(10,18,2);
+      var proteccion1 = new THREE.BoxGeometry(50,25,5);
+      var proteccion2 = new THREE.BoxGeometry(130,80,2);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -324,6 +327,9 @@
       var grada6 = new THREE.Mesh(baseGrada6, cementTexture);
       var asientoG1 = new THREE.Mesh(asientoGrada, redPlastic);
       var respaldoG1 = new THREE.Mesh(respaldoGrada, redPlastic);
+      var prote1 = new THREE.Mesh(proteccion1, glassTexture);
+      var prote2 = new THREE.Mesh(proteccion2, glassTexture);
+      var prote3 = new THREE.Mesh(proteccion2, glassTexture);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -455,11 +461,17 @@
 
       grada5.position.y = 40; grada5.position.z = 295; grada5.position.x = 0;
 
-      grada6.position.y = 50; grada5.position.z = 295; grada5.position.x = 0;
+      //grada6.position.y = 50; grada6.position.z = 295; grada6.position.x = 0;
 
       asientoG1.position.y = 6; asientoG1.position.z = 379; asientoG1.position.x = 0;
 
-      respaldoG1.position.y = 6; respaldoG1.position.z = 376; respaldoG1.position.x = 0
+      respaldoG1.position.y = 6; respaldoG1.position.z = 376; respaldoG1.position.x = 0;
+
+      prote1.position.y = 7; prote1.position.x = 0; prote1.position.z = 398;
+
+      prote2.position.y = 35; prote2.position.x = 276; prote2.position.z = 330; prote2.rotation.y = 3.1416/2;
+      
+      prote3.position.y = 35; prote3.position.x = -276; prote3.position.z = 330; prote3.rotation.y = 3.1416/2;
 
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
@@ -564,7 +576,8 @@
       gradas.add(grada3);
       gradas.add(grada4);
       gradas.add(grada5);
-      gradas.add(grada6);
+      //gradas.add(grada6);
+      gradas.add(prote1);
       asientoBase.add(asientoG1);
       asientoBase.add(respaldoG1);
       var asientoBase2 = asientoBase.clone();
@@ -581,19 +594,64 @@
       var asientosSeccion4 = asientosSeccion1.clone();
       var asientosSeccion5 = asientosSeccion1.clone();
       var asientosSeccion6 = asientosSeccion1.clone();
-      //---------------------------------
+      //------------------------------------------------------------------
       asientosSeccion2.position.y = 10; asientosSeccion2.position.z = -20;
       asientosSeccion3.position.y = 20; asientosSeccion3.position.z = -40;
       asientosSeccion4.position.y = 30; asientosSeccion4.position.z = -60;
       asientosSeccion5.position.y = 40; asientosSeccion5.position.z = -78;
       asientosSeccion6.position.y = 40; asientosSeccion6.position.z = -95;
-      //---------------------------------
+      //------------------------------------------------------------------
       gradas.add(asientosSeccion1);
       gradas.add(asientosSeccion2);
       gradas.add(asientosSeccion3);
       gradas.add(asientosSeccion4);
       gradas.add(asientosSeccion5);
       gradas.add(asientosSeccion6);
+      var gradas2 = gradas.clone();
+      var gradas3 = gradas.clone();
+      var gradas4 = gradas.clone();
+      var gradas5 = gradas.clone();
+      var gradas6 = gradas.clone();
+      var gradas7 = gradas.clone();
+      var gradas8 = gradas.clone();
+      var gradas9 = gradas.clone();
+      var gradas10 = gradas.clone();
+      var gradas11 = gradas.clone();
+      //---------------------------------
+      gradas2.position.x = 50;
+      gradas3.position.x = -50;
+      gradas4.position.x = 100;
+      gradas5.position.x = 150;
+      gradas6.position.x = 200;
+      gradas7.position.x = 250;
+      gradas8.position.x = -100;
+      gradas9.position.x = -150;
+      gradas10.position.x = -200;
+      gradas11.position.x = -250;
+      //-----------------------------------
+      gradasSeccion1.add(gradas);
+      gradasSeccion1.add(gradas2);
+      gradasSeccion1.add(gradas3);
+      gradasSeccion1.add(gradas4);
+      gradasSeccion1.add(gradas5);
+      gradasSeccion1.add(gradas6);
+      gradasSeccion1.add(gradas7);
+      gradasSeccion1.add(gradas8);
+      gradasSeccion1.add(gradas9);
+      gradasSeccion1.add(gradas10);
+      gradasSeccion1.add(gradas11);
+      gradasSeccion1.add(prote2);
+      gradasSeccion1.add(prote3);
+      var gradasSeccion2 = gradasSeccion1.clone();
+      var gradasSeccion3 = gradasSeccion1.clone();
+      var gradasSeccion4 = gradasSeccion1.clone();
+      var gradasSeccion5 = gradasSeccion1.clone();
+      //------------------------------------------
+      gradasSeccion2.position.y = 100;
+      gradasSeccion3.position.z = 1250; gradasSeccion3.rotation.y = 3.1416;
+      gradasSeccion4.position.z = 1250; gradasSeccion4.rotation.y = 3.1416; gradasSeccion4.position.y = 100;
+      gradasSeccion5.position.z = 1250; gradasSeccion5.rotation.y = 3.1416; gradasSeccion5.position.y = 200;
+      //------------------------------------------
 
       bombonera.add(pared1);
       bombonera.add(baras1);
@@ -609,7 +667,12 @@
       bombonera.add(palcoSeccion3);
       bombonera.add(palcoSeccion4);
       bombonera.add(techos);
-      bombonera.add(gradas);
+      bombonera.add(gradasSeccion1);
+      bombonera.add(gradasSeccion2);
+      bombonera.add(gradasSeccion3);
+      bombonera.add(gradasSeccion4);
+      bombonera.add(gradasSeccion5);
+
 
       //Bombonera se agrega al scene ---------------------------------------------------------------------------
       scene.add(bombonera);
