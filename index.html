@@ -207,9 +207,9 @@
       goal1 = new THREE.Object3D();
       goal2 = new THREE.Object3D();
       palco = new THREE.Object3D();
-      palco2 = new THREE.Object3D();
-      palco3 = new THREE.Object3D();
+      palco5 = new THREE.Object3D();
       palcoSeccion1 = new THREE.Object3D();
+      palcoSeccion3 = new THREE.Object3D();
       
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
@@ -288,6 +288,11 @@
       var glassPalco = new THREE.Mesh(glassP, glassTexture);
       var glassPalco2 = new THREE.Mesh(glassP2, glassTexture);
       var glassPalco3 = new THREE.Mesh(glassP2, glassTexture);
+      //Palco 2 -----------------------------------------------------------------------------------------------
+      var floorPalco2 = new THREE.Mesh(pisoP, redMetal);
+      var glassPalco4 = new THREE.Mesh(glassP, glassTexture);
+      var glassPalco5 = new THREE.Mesh(glassP2, glassTexture);
+      var glassPalco6 = new THREE.Mesh(glassP2, glassTexture);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -393,6 +398,14 @@
 
       glassPalco3.position.y = 162; glassPalco3.position.z = 300; glassPalco3.position.x = 416; glassPalco3.rotation.y = 3.1416/2;
 
+      floorPalco2.position.y = 150; floorPalco2.position.z = 950; floorPalco2.position.x = 350;
+
+      glassPalco4.position.y = 162; glassPalco4.position.z = 924; glassPalco4.position.x = 350;
+
+      glassPalco5.position.y = 162; glassPalco5.position.z = 950; glassPalco5.position.x = 284; glassPalco5.rotation.y = 3.1416/2;
+
+      glassPalco6.position.y = 162; glassPalco6.position.z = 950; glassPalco6.position.x = 415; glassPalco6.rotation.y = 3.1416/2;
+
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
       pared1.add(paredRoja2);
@@ -461,6 +474,33 @@
       //------------------------------
       palcoSeccion2.position.x = -700;
       //------------------------------
+      palco5.add(floorPalco2);
+      palco5.add(glassPalco4);
+      palco5.add(glassPalco5);
+      palco5.add(glassPalco6);
+      var palco6 = palco5.clone();
+      var palco7 = palco5.clone();
+      var palco8 = palco5.clone();
+      var palco9 = palco5.clone();
+      var palco10 = palco5.clone();
+      palcoSeccion3.add(palco5);
+      palcoSeccion3.add(palco6);
+      palcoSeccion3.add(palco7);
+      palcoSeccion3.add(palco8);
+      palcoSeccion3.add(palco9);
+      palcoSeccion3.add(palco10);
+      //------------------------
+      palco6.position.y = -35;
+      palco7.position.y = -70;
+      palco8.position.y = -105;
+      palco9.position.y = 35;
+      palco10.position.y = 70;
+      //-----------------------
+      var palcoSeccion4 = palcoSeccion3.clone();
+      //-------------------------------
+      palcoSeccion4.position.x = -700;
+      //-------------------------------
+
       bombonera.add(pared1);
       bombonera.add(baras1);
       bombonera.add(rejita);
@@ -472,6 +512,8 @@
       bombonera.add(goal2);
       bombonera.add(palcoSeccion1);
       bombonera.add(palcoSeccion2);
+      bombonera.add(palcoSeccion3);
+      bombonera.add(palcoSeccion4);
 
       //Bombonera se agrega al scene ---------------------------------------------------------------------------
       scene.add(bombonera);
