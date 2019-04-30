@@ -210,6 +210,7 @@
       palco5 = new THREE.Object3D();
       palcoSeccion1 = new THREE.Object3D();
       palcoSeccion3 = new THREE.Object3D();
+      techos = new THREE.Object3D();
       
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
@@ -226,6 +227,8 @@
       var pisoP = new THREE.BoxGeometry(130,5,50);
       var glassP = new THREE.BoxGeometry(130,30,2);
       var glassP2 = new THREE.BoxGeometry(50,30,2);
+      var techoB = new THREE.BoxGeometry(800, 5, 155);
+      var techoB2 = new THREE.BoxGeometry(155, 5, 600);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -246,7 +249,7 @@
       var bara12 = new THREE.Mesh(barasAdorno, whiteMetal);
       var bara13 = new THREE.Mesh(barasAdorno, whiteMetal);
       //Rejitas --------------------------------------------------------------------------------------------
-      var estructuraB = new THREE.Mesh(estructuraBlanca, whiteMetal);
+      //var estructuraB = new THREE.Mesh(estructuraBlanca, whiteMetal);
       var wireframeB = new THREE.Mesh(wBlanco, adornoMaterial);
       var wireframeB2 = new THREE.Mesh(wBlanco, adornoMaterial);
       var wireframeB3 = new THREE.Mesh(wBlanco, adornoMaterial);
@@ -293,6 +296,11 @@
       var glassPalco4 = new THREE.Mesh(glassP, glassTexture);
       var glassPalco5 = new THREE.Mesh(glassP2, glassTexture);
       var glassPalco6 = new THREE.Mesh(glassP2, glassTexture);
+      //Techo ------------------------------------------------------------------------------------------------
+      var techo1 = new THREE.Mesh(techoB, whiteMetal);
+      var techo2 = new THREE.Mesh(techoB, whiteMetal);
+      var techo3 = new THREE.Mesh(techoB2, whiteMetal);
+      var techo4 = new THREE.Mesh(techoB2, whiteMetal);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -326,7 +334,7 @@
 
       bara13.position.y = 240; bara13.position.z = 260; bara13.position.x = 0;
 
-      estructuraB.position.y = 290; estructuraB.position.z = 250; estructuraB.position.x = 0;
+      //estructuraB.position.y = 290; estructuraB.position.z = 250; estructuraB.position.x = 0;
 
       wireframeB.position.y = 320; wireframeB.position.z = 250; wireframeB.position.x = 300;
       
@@ -406,6 +414,14 @@
 
       glassPalco6.position.y = 162; glassPalco6.position.z = 950; glassPalco6.position.x = 415; glassPalco6.rotation.y = 3.1416/2;
 
+      techo1.position.y = 288; techo1.position.z = 300; techo1.position.x = 0;
+
+      techo2.position.y = 288; techo2.position.z = 900; techo2.position.x = 0;
+
+      techo3.position.y = 288; techo3.position.z = 530; techo3.position.x = -320; 
+
+      techo4.position.y = 288; techo4.position.z = 530; techo4.position.x = 320; 
+
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
       pared1.add(paredRoja2);
@@ -423,7 +439,7 @@
       baras1.add(bara11);
       baras1.add(bara12);
       baras1.add(bara13);
-      rejita.add(estructuraB);
+      //rejita.add(estructuraB);
       rejita.add(wireframeB);
       rejita.add(wireframeB2);
       rejita.add(wireframeB3);
@@ -500,6 +516,10 @@
       //-------------------------------
       palcoSeccion4.position.x = -700;
       //-------------------------------
+      techos.add(techo1);
+      techos.add(techo2);
+      techos.add(techo3);
+      techos.add(techo4);
 
       bombonera.add(pared1);
       bombonera.add(baras1);
@@ -514,6 +534,7 @@
       bombonera.add(palcoSeccion2);
       bombonera.add(palcoSeccion3);
       bombonera.add(palcoSeccion4);
+      bombonera.add(techos);
 
       //Bombonera se agrega al scene ---------------------------------------------------------------------------
       scene.add(bombonera);
