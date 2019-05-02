@@ -159,6 +159,9 @@
       var seats = new THREE.TorusGeometry(35,2,5,100);//rueda del frisbee
       var rinCoche = new THREE.TorusGeometry(3,1,16,100);//rin del coche
       var llantaCoche = new THREE.TorusGeometry(5,2,16,100);//rueda del coche
+      var lateralCoche1 = new THREE.BoxGeometry( 25, 10, 1 );
+      var lateralCocheArriba1 = new THREE.BoxGeometry( 13, 5, 1 );
+      var lateralCocheTriangulo1 = new THREE.BoxGeometry( 12, 5, 1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -397,7 +400,10 @@
       llantasDelanteras = new THREE.Object3D();
       llantasTraseras = new THREE.Object3D();
       llantas = new THREE.Object3D();  
-      puertasFrente = new THREE.Object3D();
+      puertaIzquerda = new THREE.Object3D();
+      lateralIzquierdo = new THREE.Object3D();
+      puertaDerecha = new THREE.Object3D();
+      lateralDerecho = new THREE.Object3D();
       hood = new THREE.Object3D();
       trunk = new THREE.Object3D();
       //Dron
@@ -444,7 +450,27 @@
       llantas.add(llantasDelanteras);
       llantas.add(llantasTraseras);
 
+      //Lateral del coche
+      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, whiteMetal );
+      var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, blueMetal);
+      var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, purpleMetal)
+
+      puertaDerecha.add(cuadroInferiorDerecho);
+      puertaDerecha.add(cuadroSuperiorDerecho);
+      puertaDerecha.add(trianguloDerecho)
+      
+      lateralDerecho.add(puertaDerecha);
+      cuadroSuperiorDerecho.position.y+=7.5;
+      cuadroSuperiorDerecho.position.x-=6;
+      lateralDerecho.position.z+=30;
+      lateralDerecho.position.y+=5;
+      lateralDerecho.position.x+=5;
+      trianguloDerecho.position.y+=7.5;
+      trianguloDerecho.position.x+=6.5;
+
+
       coche.add(llantas);
+      coche.add(lateralDerecho);
 
       scene.add(coche);
       coche.position.y=2.5;
