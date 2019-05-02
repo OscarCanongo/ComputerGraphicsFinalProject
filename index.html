@@ -183,17 +183,24 @@
       var redMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redMetal.jpg")});
       var purpleMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("purpleMetal.jpg")});
       var whiteMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("whiteMetal.jpg")});
+      var glassTexture = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("glassTexture.jpg"),
+        transparent: true, 
+        opacity: 0.5});
       var adornoMaterial = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         wireframe: true
       });
       var escudo = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("escudo.jpg")});
+      var futbol = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("canchafut.jpg")});
+      var cementTexture = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("cementMaterial.jpg")});
+      var redPlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redPlastic.jpg")});
+      var bluePlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("bluePlastic.jpg")});
 
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
       
-      //Estadio Bombonera Toluca (Nemesio Diez) -----------------------------------------------------------------------
+      //Estadio Bombonera Toluca (Nemesio Diez) ---------------------------------------------------------------------------------------------------
 
       bombonera = new THREE.Object3D();
       pared1 = new THREE.Object3D();
@@ -202,6 +209,20 @@
       pared2 = new THREE.Object3D();
       pared3 = new THREE.Object3D();
       pared4 = new THREE.Object3D();
+      futField = new THREE.Object3D();
+      goal1 = new THREE.Object3D();
+      goal2 = new THREE.Object3D();
+      palco = new THREE.Object3D();
+      palco5 = new THREE.Object3D();
+      palcoSeccion1 = new THREE.Object3D();
+      palcoSeccion3 = new THREE.Object3D();
+      techos = new THREE.Object3D();
+      gradas = new THREE.Object3D();
+      asientosSeccion1 = new THREE.Object3D();
+      asientoBase = new THREE.Object3D();
+      gradasSeccion1 = new THREE.Object3D();
+      gradasSeccion6 = new THREE.Object3D();
+      gradaLateral1 = new THREE.Object3D();
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
       var rectanguloRojo = new THREE.BoxGeometry(100, 300, 50);
@@ -211,6 +232,24 @@
       var toluca = new THREE.BoxGeometry(100,100,5);
       var pb = new THREE.BoxGeometry(600,300,50);
       var pb2 = new THREE.BoxGeometry(750,300,50);
+      var cancha = new THREE.BoxGeometry(500, 400, 5);
+      var tuboVertical = new THREE.CylinderGeometry(2,2,50,100);
+      var tuboHorizontal = new THREE.CylinderGeometry(2,2,120,100);
+      var pisoP = new THREE.BoxGeometry(130,5,50);
+      var glassP = new THREE.BoxGeometry(130,30,2);
+      var glassP2 = new THREE.BoxGeometry(50,30,2);
+      var techoB = new THREE.BoxGeometry(800, 5, 155);
+      var techoB2 = new THREE.BoxGeometry(155, 5, 600);
+      var baseGrada1 = new THREE.BoxGeometry(50,10,120);
+      var baseGrada2 = new THREE.BoxGeometry(50,10,100);
+      var baseGrada3 = new THREE.BoxGeometry(50,10,80);
+      var baseGrada4 = new THREE.BoxGeometry(50,10,60);
+      var baseGrada5 = new THREE.BoxGeometry(50,10,40);
+      var baseGrada6 = new THREE.BoxGeometry(50,10,20);
+      var asientoGrada = new THREE.BoxGeometry(10,2,8);
+      var respaldoGrada = new THREE.BoxGeometry(10,18,2);
+      var proteccion1 = new THREE.BoxGeometry(50,25,5);
+      var proteccion2 = new THREE.BoxGeometry(130,80,2);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -231,7 +270,7 @@
       var bara12 = new THREE.Mesh(barasAdorno, whiteMetal);
       var bara13 = new THREE.Mesh(barasAdorno, whiteMetal);
       //Rejitas --------------------------------------------------------------------------------------------
-      var estructuraB = new THREE.Mesh(estructuraBlanca, whiteMetal);
+      //var estructuraB = new THREE.Mesh(estructuraBlanca, whiteMetal);
       var wireframeB = new THREE.Mesh(wBlanco, adornoMaterial);
       var wireframeB2 = new THREE.Mesh(wBlanco, adornoMaterial);
       var wireframeB3 = new THREE.Mesh(wBlanco, adornoMaterial);
@@ -258,6 +297,44 @@
       var paredb2 = new THREE.Mesh(pb2,whiteMetal);
       //Pared 4 -----------------------------------------------------------------------------------------------
       var paredb3 = new THREE.Mesh(pb2,whiteMetal);
+      //Cancha ------------------------------------------------------------------------------------------------
+      var field = new THREE.Mesh(cancha,futbol);
+      //Porteria 1 --------------------------------------------------------------------------------------------
+      var futTubo = new THREE.Mesh(tuboVertical, metal);
+      var futTubo2 = new THREE.Mesh(tuboVertical, metal);
+      var futTubo5 = new THREE.Mesh(tuboHorizontal, metal);
+      //Porteria 2 --------------------------------------------------------------------------------------------
+      var futTubo3 = new THREE.Mesh(tuboVertical, metal);
+      var futTubo4 = new THREE.Mesh(tuboVertical, metal);
+      var futTubo6 = new THREE.Mesh(tuboHorizontal, metal);
+      //Palco -------------------------------------------------------------------------------------------------
+      var floorPalco = new THREE.Mesh(pisoP, redMetal);
+      var glassPalco = new THREE.Mesh(glassP, glassTexture);
+      var glassPalco2 = new THREE.Mesh(glassP2, glassTexture);
+      var glassPalco3 = new THREE.Mesh(glassP2, glassTexture);
+      //Palco 2 -----------------------------------------------------------------------------------------------
+      var floorPalco2 = new THREE.Mesh(pisoP, redMetal);
+      var glassPalco4 = new THREE.Mesh(glassP, glassTexture);
+      var glassPalco5 = new THREE.Mesh(glassP2, glassTexture);
+      var glassPalco6 = new THREE.Mesh(glassP2, glassTexture);
+      //Techo ------------------------------------------------------------------------------------------------
+      var techo1 = new THREE.Mesh(techoB, whiteMetal);
+      var techo2 = new THREE.Mesh(techoB, whiteMetal);
+      var techo3 = new THREE.Mesh(techoB2, whiteMetal);
+      var techo4 = new THREE.Mesh(techoB2, whiteMetal);
+      //Gradas ------------------------------------------------------------------------------------------------
+      var grada1 = new THREE.Mesh(baseGrada1, cementTexture);
+      var grada2 = new THREE.Mesh(baseGrada2, cementTexture);
+      var grada3 = new THREE.Mesh(baseGrada3, cementTexture);
+      var grada4 = new THREE.Mesh(baseGrada4, cementTexture);
+      var grada5 = new THREE.Mesh(baseGrada5, cementTexture);
+      var asientoG1 = new THREE.Mesh(asientoGrada, redPlastic);
+      var respaldoG1 = new THREE.Mesh(respaldoGrada, redPlastic);
+      var prote1 = new THREE.Mesh(proteccion1, glassTexture);
+      var prote2 = new THREE.Mesh(proteccion2, glassTexture);
+      var prote3 = new THREE.Mesh(proteccion2, glassTexture);
+      var prote4 = new THREE.Mesh(proteccion2, glassTexture);
+      var prote5 = new THREE.Mesh(proteccion2, glassTexture);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -291,7 +368,7 @@
 
       bara13.position.y = 240; bara13.position.z = 260; bara13.position.x = 0;
 
-      estructuraB.position.y = 290; estructuraB.position.z = 250; estructuraB.position.x = 0;
+      //estructuraB.position.y = 290; estructuraB.position.z = 250; estructuraB.position.x = 0;
 
       wireframeB.position.y = 320; wireframeB.position.z = 250; wireframeB.position.x = 300;
       
@@ -341,6 +418,68 @@
       
       paredb3.position.y = 140; paredb3.position.z = 630; paredb3.position.x = -420; paredb3.rotation.y = 3.1416/2;
 
+      field.position.y = -5; field.position.z = 625; field.position.x = 10; field.rotation.x = 3.1416/2;
+
+      futTubo.position.y = 20; futTubo.position.z = 685; futTubo.position.x = 212;
+
+      futTubo2.position.y = 20; futTubo2.position.z = 565; futTubo2.position.x = 212;
+
+      futTubo5.position.y = 43; futTubo5.position.z = 625; futTubo5.position.x = 212; futTubo5.rotation.x = 3.1416/2;
+
+      futTubo3.position.y = 20; futTubo3.position.z = 685; futTubo3.position.x = -190;
+
+      futTubo4.position.y = 20; futTubo4.position.z = 565; futTubo4.position.x = -190;
+
+      futTubo6.position.y = 43; futTubo6.position.z = 625; futTubo6.position.x = -190; futTubo6.rotation.x = 3.1416/2;
+
+      floorPalco.position.y = 150; floorPalco.position.z = 300; floorPalco.position.x = 350;
+
+      glassPalco.position.y = 162; glassPalco.position.z = 326; glassPalco.position.x = 350;
+
+      glassPalco2.position.y = 162; glassPalco2.position.z = 300; glassPalco2.position.x = 285; glassPalco2.rotation.y = 3.1416/2;
+
+      glassPalco3.position.y = 162; glassPalco3.position.z = 300; glassPalco3.position.x = 416; glassPalco3.rotation.y = 3.1416/2;
+
+      floorPalco2.position.y = 150; floorPalco2.position.z = 950; floorPalco2.position.x = 350;
+
+      glassPalco4.position.y = 162; glassPalco4.position.z = 924; glassPalco4.position.x = 350;
+
+      glassPalco5.position.y = 162; glassPalco5.position.z = 950; glassPalco5.position.x = 284; glassPalco5.rotation.y = 3.1416/2;
+
+      glassPalco6.position.y = 162; glassPalco6.position.z = 950; glassPalco6.position.x = 415; glassPalco6.rotation.y = 3.1416/2;
+
+      techo1.position.y = 288; techo1.position.z = 300; techo1.position.x = 0;
+
+      techo2.position.y = 288; techo2.position.z = 900; techo2.position.x = 0;
+
+      techo3.position.y = 288; techo3.position.z = 530; techo3.position.x = -320; 
+
+      techo4.position.y = 288; techo4.position.z = 530; techo4.position.x = 320; 
+
+      grada1.position.y = 0; grada1.position.z = 335; grada1.position.x = 0;
+
+      grada2.position.y = 10; grada2.position.z = 325; grada2.position.x = 0;
+
+      grada3.position.y = 20; grada3.position.z = 315; grada3.position.x = 0;
+
+      grada4.position.y = 30; grada4.position.z = 305; grada4.position.x = 0;
+
+      grada5.position.y = 40; grada5.position.z = 295; grada5.position.x = 0;
+
+      asientoG1.position.y = 6; asientoG1.position.z = 379; asientoG1.position.x = 0;
+
+      respaldoG1.position.y = 6; respaldoG1.position.z = 376; respaldoG1.position.x = 0;
+
+      prote1.position.y = 7; prote1.position.x = 0; prote1.position.z = 398;
+
+      prote2.position.y = 35; prote2.position.x = 276; prote2.position.z = 330; prote2.rotation.y = 3.1416/2;
+      
+      prote3.position.y = 35; prote3.position.x = -276; prote3.position.z = 330; prote3.rotation.y = 3.1416/2;
+
+      prote4.position.y = 35; prote4.position.x = -340; prote4.position.z = 524; 
+
+      prote5.position.y = 35; prote5.position.x = -340; prote5.position.z = 726;
+
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
       pared1.add(paredRoja2);
@@ -358,7 +497,7 @@
       baras1.add(bara11);
       baras1.add(bara12);
       baras1.add(bara13);
-      rejita.add(estructuraB);
+      //rejita.add(estructuraB);
       rejita.add(wireframeB);
       rejita.add(wireframeB2);
       rejita.add(wireframeB3);
@@ -382,6 +521,172 @@
       pared2.add(paredRoja4);
       pared3.add(paredb2);
       pared4.add(paredb3);
+      futField.add(field);
+      goal1.add(futTubo);
+      goal1.add(futTubo2);
+      goal1.add(futTubo5);
+      goal2.add(futTubo3);
+      goal2.add(futTubo4);
+      goal2.add(futTubo6);
+      palco.add(floorPalco);
+      palco.add(glassPalco);
+      palco.add(glassPalco2);
+      palco.add(glassPalco3);
+      var palco2 = palco.clone();
+      var palco3 = palco.clone();
+      var palco4 = palco.clone();
+      palcoSeccion1.add(palco);
+      palcoSeccion1.add(palco2);
+      palcoSeccion1.add(palco3);
+      palcoSeccion1.add(palco4);
+      //-----------------------
+      palco2.position.y = -35;
+      palco3.position.y = -70;
+      palco4.position.y = -105;
+      //-----------------------
+      var palcoSeccion2 = palcoSeccion1.clone();
+      //------------------------------
+      palcoSeccion2.position.x = -700;
+      //------------------------------
+      palco5.add(floorPalco2);
+      palco5.add(glassPalco4);
+      palco5.add(glassPalco5);
+      palco5.add(glassPalco6);
+      var palco6 = palco5.clone();
+      var palco7 = palco5.clone();
+      var palco8 = palco5.clone();
+      var palco9 = palco5.clone();
+      var palco10 = palco5.clone();
+      palcoSeccion3.add(palco5);
+      palcoSeccion3.add(palco6);
+      palcoSeccion3.add(palco7);
+      palcoSeccion3.add(palco8);
+      palcoSeccion3.add(palco9);
+      palcoSeccion3.add(palco10);
+      //------------------------
+      palco6.position.y = -35;
+      palco7.position.y = -70;
+      palco8.position.y = -105;
+      palco9.position.y = 35;
+      palco10.position.y = 70;
+      //-----------------------
+      var palcoSeccion4 = palcoSeccion3.clone();
+      //-------------------------------
+      palcoSeccion4.position.x = -700;
+      //-------------------------------
+      techos.add(techo1);
+      techos.add(techo2);
+      techos.add(techo3);
+      techos.add(techo4);
+      gradas.add(grada1);
+      gradas.add(grada2);
+      gradas.add(grada3);
+      gradas.add(grada4);
+      gradas.add(grada5);
+      gradas.add(prote1);
+      asientoBase.add(asientoG1);
+      asientoBase.add(respaldoG1);
+      var asientoBase2 = asientoBase.clone();
+      var asientoBase3 = asientoBase.clone();
+      asientosSeccion1.add(asientoBase);
+      asientosSeccion1.add(asientoBase2);
+      asientosSeccion1.add(asientoBase3);
+      //---------------------------------
+      asientoBase2.position.x = 15;
+      asientoBase3.position.x = -15;
+      //---------------------------------
+      var asientosSeccion2 = asientosSeccion1.clone();
+      var asientosSeccion3 = asientosSeccion1.clone();
+      var asientosSeccion4 = asientosSeccion1.clone();
+      var asientosSeccion5 = asientosSeccion1.clone();
+      var asientosSeccion6 = asientosSeccion1.clone();
+      //------------------------------------------------------------------
+      asientosSeccion2.position.y = 10; asientosSeccion2.position.z = -20;
+      asientosSeccion3.position.y = 20; asientosSeccion3.position.z = -40;
+      asientosSeccion4.position.y = 30; asientosSeccion4.position.z = -60;
+      asientosSeccion5.position.y = 40; asientosSeccion5.position.z = -78;
+      asientosSeccion6.position.y = 40; asientosSeccion6.position.z = -95;
+      //------------------------------------------------------------------
+      gradas.add(asientosSeccion1);
+      gradas.add(asientosSeccion2);
+      gradas.add(asientosSeccion3);
+      gradas.add(asientosSeccion4);
+      gradas.add(asientosSeccion5);
+      gradas.add(asientosSeccion6);
+      var gradas2 = gradas.clone();
+      var gradas3 = gradas.clone();
+      var gradas4 = gradas.clone();
+      var gradas5 = gradas.clone();
+      var gradas6 = gradas.clone();
+      var gradas7 = gradas.clone();
+      var gradas8 = gradas.clone();
+      var gradas9 = gradas.clone();
+      var gradas10 = gradas.clone();
+      var gradas11 = gradas.clone();
+      var gradas12 = gradas.clone();
+      var gradas13 = gradas.clone();
+      var gradas14 = gradas.clone();
+      var gradas15 = gradas.clone();
+      //---------------------------------
+      gradas2.position.x = 50;
+      gradas3.position.x = -50;
+      gradas4.position.x = 100;
+      gradas5.position.x = 150;
+      gradas6.position.x = 200;
+      gradas7.position.x = 250;
+      gradas8.position.x = -100;
+      gradas9.position.x = -150;
+      gradas10.position.x = -200;
+      gradas11.position.x = -250;
+      gradas12.position.x = -670; gradas12.rotation.y = 3.1416/2; gradas12.position.z = 550;
+      gradas13.position.x = -670; gradas13.rotation.y = 3.1416/2; gradas13.position.z = 600;
+      gradas14.position.x = -670; gradas14.rotation.y = 3.1416/2; gradas14.position.z = 650;
+      gradas15.position.x = -670; gradas15.rotation.y = 3.1416/2; gradas15.position.z = 700;
+      //-----------------------------------
+      gradasSeccion1.add(gradas);
+      gradasSeccion1.add(gradas2);
+      gradasSeccion1.add(gradas3);
+      gradasSeccion1.add(gradas4);
+      gradasSeccion1.add(gradas5);
+      gradasSeccion1.add(gradas6);
+      gradasSeccion1.add(gradas7);
+      gradasSeccion1.add(gradas8);
+      gradasSeccion1.add(gradas9);
+      gradasSeccion1.add(gradas10);
+      gradasSeccion1.add(gradas11);
+      //---------------------------
+      gradasSeccion1.add(prote2);
+      gradasSeccion1.add(prote3);
+      var gradasSeccion2 = gradasSeccion1.clone();
+      var gradasSeccion3 = gradasSeccion1.clone();
+      var gradasSeccion4 = gradasSeccion1.clone();
+      var gradasSeccion5 = gradasSeccion1.clone();
+      //------------------------------------------
+      gradasSeccion2.position.y = 100;
+      gradasSeccion3.position.z = 1250; gradasSeccion3.rotation.y = 3.1416;
+      gradasSeccion4.position.z = 1250; gradasSeccion4.rotation.y = 3.1416; gradasSeccion4.position.y = 100;
+      gradasSeccion5.position.z = 1250; gradasSeccion5.rotation.y = 3.1416; gradasSeccion5.position.y = 200;
+      //------------------------------------------
+      gradasSeccion6.add(gradas12);
+      gradasSeccion6.add(gradas13);
+      gradasSeccion6.add(gradas14);
+      gradasSeccion6.add(gradas15);
+      gradasSeccion6.add(prote4);
+      gradasSeccion6.add(prote5);
+      var gradasSeccion7 = gradasSeccion6.clone();
+      var gradasSeccion8 = gradasSeccion6.clone();
+      //------------------------------------------
+      gradasSeccion7.position.y = 100;
+      gradasSeccion8.position.y = 200;
+      //------------------------------------------
+      gradaLateral1.add(gradasSeccion6);
+      gradaLateral1.add(gradasSeccion7);
+      gradaLateral1.add(gradasSeccion8);
+      var gradaLateral2 = gradaLateral1.clone();
+      //--------------------------------------------
+      gradaLateral2.rotation.y = 3.1416; gradaLateral2.position.x = 3; gradaLateral2.position.z = 1235;
+      //---------------------------------------------
+      
 
       bombonera.add(pared1);
       bombonera.add(baras1);
@@ -389,7 +694,24 @@
       bombonera.add(pared2);
       bombonera.add(pared3);
       bombonera.add(pared4);
+      bombonera.add(futField);
+      bombonera.add(goal1);
+      bombonera.add(goal2);
+      bombonera.add(palcoSeccion1);
+      bombonera.add(palcoSeccion2);
+      bombonera.add(palcoSeccion3);
+      bombonera.add(palcoSeccion4);
+      bombonera.add(techos);
+      bombonera.add(gradasSeccion1);
+      bombonera.add(gradasSeccion2);
+      bombonera.add(gradasSeccion3);
+      bombonera.add(gradasSeccion4);
+      bombonera.add(gradasSeccion5);
+      bombonera.add(gradaLateral1);
+      bombonera.add(gradaLateral2);
 
+
+      //Bombonera se agrega al scene ---------------------------------------------------------------------------
       scene.add(bombonera);
 
       //Grupos coche--------------------------------------------------------------------------------------------
