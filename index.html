@@ -93,6 +93,12 @@
             case 70:  /* F was pressed left rotation */
             if(angleCoche<1)
             angleCoche += (0.01);          
+            break;
+          case 85://U was pressed open front doors
+            if(puertaDerecha.rotation.y<1.5){
+            puertaDerecha.rotation.y+=0.1;
+            puertaIzquierda.rotation.y-=0.1;
+            } 
             break;  
           case 82:  /* R was pressed */
            if(rotXEntiereArm<0.9)
@@ -101,15 +107,6 @@
           case 89:  /* Y was pressed */
              rotXForeArm += (0.05);         
             break; 
-           
-          //Manita
-          case 73://U
-            if(openFinger<1.5 && openFinger2>-1.5){
-              openFinger += 0.1;
-              openFinger2 -= 0.1;
-            }
-            break;
-          
           case 75://J
           if(openFinger>0.7 && openFinger2<-0.7){
               openFinger -= 0.1;
@@ -162,6 +159,7 @@
       var lateralCoche1 = new THREE.BoxGeometry( 25, 10, 1 );
       var lateralCocheArriba1 = new THREE.BoxGeometry( 13, 5, 1 );
       var lateralCocheTriangulo1 = new THREE.BoxGeometry( 12, 5, 1);
+      var lateralParado1 = new THREE.BoxGeometry( 5, 15, 1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -199,6 +197,8 @@
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
+
+      
       
       //Estadio Bombonera Toluca (Nemesio Diez) ---------------------------------------------------------------------------------------------------
 
@@ -722,7 +722,7 @@
       llantasDelanteras = new THREE.Object3D();
       llantasTraseras = new THREE.Object3D();
       llantas = new THREE.Object3D();  
-      puertaIzquerda = new THREE.Object3D();
+      puertaIzquierda = new THREE.Object3D();
       lateralIzquierdo = new THREE.Object3D();
       puertaDerecha = new THREE.Object3D();
       lateralDerecho = new THREE.Object3D();
@@ -775,24 +775,63 @@
       //Lateral del coche
       var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, whiteMetal );
       var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, blueMetal);
-      var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, purpleMetal)
+      var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, purpleMetal);
+      var cuadroLado = new THREE.Mesh(lateralParado1, blackMetal);
+
+      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, whiteMetal );
+      var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1, blueMetal);
+      var trianguloIzquierdo = new THREE.Mesh(lateralCocheTriangulo1, purpleMetal);
+      var cuadroLado1 = new THREE.Mesh(lateralParado1, blackMetal);
 
       puertaDerecha.add(cuadroInferiorDerecho);
       puertaDerecha.add(cuadroSuperiorDerecho);
-      puertaDerecha.add(trianguloDerecho)
+      puertaDerecha.add(trianguloDerecho);
+
+      puertaIzquierda.add(cuadroInferiorIzquierdo);
+      puertaIzquierda.add(cuadroSuperiorIzquierdo);
+      puertaIzquierda.add(trianguloIzquierdo);
       
+      lateralDerecho.add(cuadroLado);
       lateralDerecho.add(puertaDerecha);
+
+      lateralIzquierdo.add(cuadroLado1);
+      lateralIzquierdo.add(puertaIzquierda);
+
+      //Lo que se tiene que hacer aquí es moverlo negativamente hasta que la rotacion sea del lugar requerido
       cuadroSuperiorDerecho.position.y+=7.5;
-      cuadroSuperiorDerecho.position.x-=6;
+      cuadroSuperiorDerecho.position.x-=18;
+      cuadroInferiorDerecho.position.x-=12; //Aqui exactamente se hace eso
+      trianguloDerecho.position.y+=7.5;
+      trianguloDerecho.position.x-=5.5;
+
+      //Lo que se tiene que hacer aquí es moverlo negativamente hasta que la rotacion sea del lugar requerido
+      cuadroSuperiorIzquierdo.position.y+=7.5;
+      cuadroSuperiorIzquierdo.position.x-=18;
+      cuadroInferiorIzquierdo.position.x-=12; //Aqui exactamente se hace eso
+      trianguloIzquierdo.position.y+=7.5;
+      trianguloIzquierdo.position.x-=5.5;
+      
+      puertaDerecha.position.x+=12;
+      puertaIzquierda.position.x+=12;
+
+      cuadroLado1.position.x+=15;
+      cuadroLado1.position.y+=2.5;
+
+      cuadroLado.position.x+=15;
+      cuadroLado.position.y+=2.5;
+
       lateralDerecho.position.z+=30;
       lateralDerecho.position.y+=5;
       lateralDerecho.position.x+=5;
-      trianguloDerecho.position.y+=7.5;
-      trianguloDerecho.position.x+=6.5;
+
+      lateralIzquierdo.position.z=3;
+      lateralIzquierdo.position.y+=5;
+      lateralIzquierdo.position.x+=5;
 
 
       coche.add(llantas);
       coche.add(lateralDerecho);
+      coche.add(lateralIzquierdo);
 
       scene.add(coche);
       coche.position.y=2.5;
