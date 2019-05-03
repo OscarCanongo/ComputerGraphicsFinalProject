@@ -99,7 +99,12 @@
             puertaDerecha.rotation.y+=0.1;
             puertaIzquierda.rotation.y-=0.1;
             } 
-            break;  
+            break;
+          case 74://J was pressed close front doors
+           if(puertaDerecha.rotation.y>=0.1){
+            puertaDerecha.rotation.y-=0.1;
+            puertaIzquierda.rotation.y+=0.1;
+            }
           case 82:  /* R was pressed */
            if(rotXEntiereArm<0.9)
             rotXEntiereArm += 0.1         
@@ -116,11 +121,6 @@
           case 85://I
           if(rotHand<1.5){
             rotHand += 0.1;
-          }
-          break;
-          case 74://K
-          if(rotHand>1.5){
-            rotHand -= 0.1;
           }
         }
       }
