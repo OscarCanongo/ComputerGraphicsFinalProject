@@ -77,14 +77,14 @@
            coche.position.z -= (Math.sin(coche.rotation.y)*2);
            coche.rotation.y += llanta1.rotation.y * 0.09;
            coche.rotation.y += llanta2.rotation.y * 0.09;
-            rotarLlantas -= 0.1;        
+            rotarLlantas -= 0.3;        
             break; 
           case 71:  /* G was pressed  go back */
            coche.position.x -= (Math.cos(coche.rotation.y)*2);
            coche.position.z += (Math.sin(coche.rotation.y)*2);
            coche.rotation.y -= llanta1.rotation.y * 0.09;
            coche.rotation.y -= llanta2.rotation.y * 0.09;
-            rotarLlantas += 0.1;          
+            rotarLlantas += 0.3;          
             break;
           case 72:  /* H was pressed right rotation*/
             if(angleCoche>-1)
@@ -193,7 +193,7 @@
       var cementTexture = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("cementMaterial.jpg")});
       var redPlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redPlastic.jpg")});
       var bluePlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("bluePlastic.jpg")});
-
+      var neumatic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("neumatico.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
@@ -740,24 +740,24 @@
 
       //Llantas del coche
       var rin1 = new THREE.Mesh(rinCoche, metal );
-      var llanta11 = new THREE.Mesh(llantaCoche, blackMetal);
+      var llanta11 = new THREE.Mesh(llantaCoche, neumatic);
       llanta1.add(rin1);
       llanta1.add(llanta11);
       llanta1.position.z+=30;
 
       var rin2 = new THREE.Mesh(rinCoche, metal );
-      var llanta22 = new THREE.Mesh(llantaCoche, blackMetal);
+      var llanta22 = new THREE.Mesh(llantaCoche, neumatic);
       llanta2.add(rin2);
       llanta2.add(llanta22);
 
       var rin3 = new THREE.Mesh(rinCoche, metal );
-      var llanta33 = new THREE.Mesh(llantaCoche, blackMetal);
+      var llanta33 = new THREE.Mesh(llantaCoche, neumatic);
       llanta3.add(rin3);
       llanta3.add(llanta33);
       llanta3.position.z+=30;
 
       var rin4 = new THREE.Mesh(rinCoche, metal );
-      var llanta44 = new THREE.Mesh(llantaCoche,blackMetal);
+      var llanta44 = new THREE.Mesh(llantaCoche,neumatic);
       llanta4.add(rin4);
       llanta4.add(llanta44);
 
@@ -773,14 +773,14 @@
       llantas.add(llantasTraseras);
 
       //Lateral del coche
-      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, whiteMetal );
-      var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, blueMetal);
-      var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, purpleMetal);
+      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, blackMetal );
+      var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, glassTexture);
+      var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
       var cuadroLado = new THREE.Mesh(lateralParado1, blackMetal);
 
-      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, whiteMetal );
-      var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1, blueMetal);
-      var trianguloIzquierdo = new THREE.Mesh(lateralCocheTriangulo1, purpleMetal);
+      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, blackMetal );
+      var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1,glassTexture);
+      var trianguloIzquierdo = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
       var cuadroLado1 = new THREE.Mesh(lateralParado1, blackMetal);
 
       puertaDerecha.add(cuadroInferiorDerecho);
