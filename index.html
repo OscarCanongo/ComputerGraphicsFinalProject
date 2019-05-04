@@ -160,6 +160,9 @@
       var lateralCocheArriba1 = new THREE.BoxGeometry( 13, 5, 1 );
       var lateralCocheTriangulo1 = new THREE.BoxGeometry( 12, 5, 1);
       var lateralParado1 = new THREE.BoxGeometry( 5, 15, 1);
+      var parabrisas = new THREE.BoxGeometry( 5, 26, 1);
+      var cofre = new THREE.BoxGeometry( 26, 10, 1);
+      var abajoCofre = new THREE.BoxGeometry( 5, 16.5, 1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -828,7 +831,27 @@
       lateralIzquierdo.position.y+=5;
       lateralIzquierdo.position.x+=5;
 
+      //Parte delantera
+      var parabrisas1 = new THREE.Mesh(parabrisas, glassTexture);
+      parabrisas1.rotation.y+=3.1416/2;
+      parabrisas1.rotation.x+=3.1416/2;
+      parabrisas1.position.z+=16.5;
+      parabrisas1.position.y+=12.5;
+      parabrisas1.position.x+=22;
 
+      var cofre1 = new THREE.Mesh(cofre, blackMetal);
+      cofre1.rotation.x+=3.1416/2;
+      cofre1.rotation.z+=3.1416/2;
+      cofre1.position.z+=17;
+      cofre1.position.y+=10;
+      cofre1.position.x+=27;
+
+      hood.add(parabrisas1);
+      hood.add(cofre1);
+
+
+
+      coche.add(hood);
       coche.add(llantas);
       coche.add(lateralDerecho);
       coche.add(lateralIzquierdo);
