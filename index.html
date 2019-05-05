@@ -105,13 +105,15 @@
             puertaDerecha.rotation.y-=0.1;
             puertaIzquierda.rotation.y+=0.1;
             }
+            break;
+          case 89:  /* Y was pressed open the hood*/
+            if(cofre11.rotation.z<1)
+             cofre11.rotation.z += 0.1;         
+            break;
           case 82:  /* R was pressed */
            if(rotXEntiereArm<0.9)
             rotXEntiereArm += 0.1         
-            break; 
-          case 89:  /* Y was pressed */
-             rotXForeArm += (0.05);         
-            break; 
+            break;  
           case 75://J
           if(openFinger>0.7 && openFinger2<-0.7){
               openFinger -= 0.1;
@@ -729,6 +731,7 @@
       lateralIzquierdo = new THREE.Object3D();
       puertaDerecha = new THREE.Object3D();
       lateralDerecho = new THREE.Object3D();
+      cofre11 = new THREE.Object3D();
       hood = new THREE.Object3D();
       trunk = new THREE.Object3D();
       //Dron
@@ -843,14 +846,16 @@
       cofre1.rotation.x+=3.1416/2;
       cofre1.rotation.z+=3.1416/2;
       cofre1.position.z+=17;
-      cofre1.position.y+=10;
-      cofre1.position.x+=27;
+      cofre1.position.y=0;
+      cofre1.position.x+=5;
+      
+      cofre11.position.x+=22;
+      cofre11.position.y+=10;
 
+      cofre11.add(cofre1);
+      hood.add(cofre11)
       hood.add(parabrisas1);
-      hood.add(cofre1);
-
-
-
+      
       coche.add(hood);
       coche.add(llantas);
       coche.add(lateralDerecho);
