@@ -114,11 +114,9 @@
            if(cofre11.rotation.z>=0.1)
            cofre11.rotation.z -= 0.1;         
             break;  
-          case 75://J
-          if(openFinger>0.7 && openFinger2<-0.7){
-              openFinger -= 0.1;
-              openFinger2 += 0.1;
-            }
+          case 86: /* V was pressed open the trunk*/
+            if(batea.rotation.z<1.5)
+            batea.rotation.z+=0.1;
             break;
           case 85://I
           if(rotHand<1.5){
@@ -868,9 +866,10 @@
       abajoCoche1.position.x-=5;
 
       cajuela1.rotation.y+=3.1416/2;
-      cajuela1.position.x-=35;
       cajuela1.position.y+=5;
       cajuela1.position.z+=16.5;
+
+      batea.position.x=-35;
       
       batea.add(cajuela1);
 
