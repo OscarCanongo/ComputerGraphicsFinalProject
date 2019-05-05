@@ -110,9 +110,9 @@
             if(cofre11.rotation.z<1)
              cofre11.rotation.z += 0.1;         
             break;
-          case 82:  /* R was pressed */
-           if(rotXEntiereArm<0.9)
-            rotXEntiereArm += 0.1         
+          case 82:  /* R was pressed close the hood  */
+           if(cofre11.rotation.z>=0.1)
+           cofre11.rotation.z -= 0.1;         
             break;  
           case 75://J
           if(openFinger>0.7 && openFinger2<-0.7){
