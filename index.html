@@ -165,6 +165,8 @@
       var parabrisas = new THREE.BoxGeometry( 5, 26, 1);
       var cofre = new THREE.BoxGeometry( 26, 10, 1);
       var abajoCofre = new THREE.BoxGeometry( 5, 16.5, 1);
+      var cajuela = new THREE.BoxGeometry( 26, 10, 1);
+      var abajoCoche = new THREE.BoxGeometry( 60, 26, 1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -733,6 +735,7 @@
       lateralDerecho = new THREE.Object3D();
       cofre11 = new THREE.Object3D();
       hood = new THREE.Object3D();
+      batea = new THREE.Object3D();
       trunk = new THREE.Object3D();
       //Dron
       helice1 = new THREE.Object3D();
@@ -749,7 +752,7 @@
       var llanta11 = new THREE.Mesh(llantaCoche, neumatic);
       llanta1.add(rin1);
       llanta1.add(llanta11);
-      llanta1.position.z+=30;
+      llanta1.position.z+=33;
 
       var rin2 = new THREE.Mesh(rinCoche, metal );
       var llanta22 = new THREE.Mesh(llantaCoche, neumatic);
@@ -760,7 +763,7 @@
       var llanta33 = new THREE.Mesh(llantaCoche, neumatic);
       llanta3.add(rin3);
       llanta3.add(llanta33);
-      llanta3.position.z+=30;
+      llanta3.position.z+=33;
 
       var rin4 = new THREE.Mesh(rinCoche, metal );
       var llanta44 = new THREE.Mesh(llantaCoche,neumatic);
@@ -855,7 +858,26 @@
       cofre11.add(cofre1);
       hood.add(cofre11)
       hood.add(parabrisas1);
+
+      //Parte trasera
+      var abajoCoche1 = new THREE.Mesh(abajoCoche, blackMetal);
+      var cajuela1= new THREE.Mesh(cajuela, blackMetal);
+
+      abajoCoche1.rotation.x+=3.1416/2;
+      abajoCoche1.position.z+=16.5;
+      abajoCoche1.position.x-=5;
+
+      cajuela1.rotation.y+=3.1416/2;
+      cajuela1.position.x-=35;
+      cajuela1.position.y+=5;
+      cajuela1.position.z+=16.5;
       
+      batea.add(cajuela1);
+
+      trunk.add(abajoCoche1);
+      trunk.add(batea);
+
+      coche.add(trunk);
       coche.add(hood);
       coche.add(llantas);
       coche.add(lateralDerecho);
