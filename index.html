@@ -118,10 +118,10 @@
             if(batea.rotation.z<1.5)
             batea.rotation.z+=0.1;
             break;
-          case 85://I
-          if(rotHand<1.5){
-            rotHand += 0.1;
-          }
+          case 66: /* B was pressed open the trunk*/
+            if(batea.rotation.z>=0.1)
+            batea.rotation.z-=0.1;
+            break;
         }
       }
 
