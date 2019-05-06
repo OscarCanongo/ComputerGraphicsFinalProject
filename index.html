@@ -32,6 +32,7 @@
       var xposCoche=0;
       var angleCoche=0;
       var rotarLlantas=0;
+      var dronboton=0;
 
       function doKeyDown(evt) {
 
@@ -121,6 +122,15 @@
           case 66: /* B was pressed close the trunk*/
             if(batea.rotation.z>=0.1)
             batea.rotation.z-=0.1;
+            break;
+          case 88: /* X was pressed release a drone that flies above the car*/
+                   /* X was pressed reatach the drone that flies above the car*/
+            if(dronboton==0)
+            dronboton=1;
+            else{
+            dronboton=0;
+            dron.position.y=0;
+            }
             break;
         }
       }
@@ -921,28 +931,28 @@
 
       var helice11 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice11.position.y+=17;
-      helice11.position.z+=12;
+      helice11.position.y+=16;
+      helice11.position.z+=13;
       helice11.position.x-=3;
       helice11.rotation.y+=3.1416/2;
 
       var helice22 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice22.position.y+=17;
+      helice22.position.y+=16;
       helice22.position.z+=30;
       helice22.position.x-=3;
       helice22.rotation.y+=3.1416/2;
 
       var helice33 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice33.position.y+=17;
-      helice33.position.z+=12;
+      helice33.position.y+=16;
+      helice33.position.z+=13;
       helice33.position.x+=17;
       helice33.rotation.y+=3.1416/2;
 
       var helice44 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice44.position.y+=17;
+      helice44.position.y+=16;
       helice44.position.z+=30;
       helice44.position.x+=17;
       helice44.rotation.y+=3.1416/2;
@@ -1479,6 +1489,14 @@
         llanta4.rotation.z=rotarLlantas;
         llanta1.rotation.y=angleCoche;
         llanta2.rotation.y=angleCoche;
+        if(dronboton==1){
+          helice11.rotation.y+=1;
+          helice22.rotation.y+=1;
+          helice33.rotation.y+=1;
+          helice44.rotation.y+=1;
+          while(dron.position.y < 40)
+          dron.position.y+=0.1;
+        }
         renderer.render(scene, camera);
       };
       render();
