@@ -165,6 +165,10 @@
       var abajoCofre = new THREE.BoxGeometry( 5, 16.5, 1);
       var cajuela = new THREE.BoxGeometry( 26, 10, 1);
       var abajoCoche = new THREE.BoxGeometry( 60, 26, 1);
+      var arribaCoche = new THREE.BoxGeometry( 30, 26, 1);
+      var cuerpoDron = new THREE.BoxGeometry(10, 5, 1);
+      var alaDron = new THREE.BoxGeometry(10, 0.5, 0.5);
+      var helicesDron = new THREE.BoxGeometry(5, 0.5, 0.5);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -740,7 +744,6 @@
       helice2 = new THREE.Object3D();
       helice3 = new THREE.Object3D();
       helice4 = new THREE.Object3D();
-      helices = new THREE.Object3D();//Esto tal vez pueda ser cambiado si se rotan por separado
       dron = new THREE.Object3D();
 
       coche = new THREE.Object3D(); //El dron va dentro del grupo del coche
@@ -876,6 +879,93 @@
       trunk.add(abajoCoche1);
       trunk.add(batea);
 
+      var arribaCoche1 = new THREE.Mesh(arribaCoche, blackMetal);
+
+      arribaCoche1.position.y+=15.5;
+      arribaCoche1.rotation.x+=3.1416/2;
+      arribaCoche1.position.z+=16.5;
+      arribaCoche1.position.x+=7;
+
+      var cuerpoDron1 = new THREE.Mesh(cuerpoDron, whiteMetal);
+
+      cuerpoDron1.rotation.x += 3.14161/2;
+      cuerpoDron1.position.y += 16;
+      cuerpoDron1.position.z += 20;
+      cuerpoDron1.position.x += 7;
+
+      var alaDron1 = new THREE.Mesh(alaDron, whiteMetal);
+
+      alaDron1.position.y+=16;
+      alaDron1.position.z+=15;
+      alaDron1.rotation.y+=-3.1416/4; 
+
+      var alaDron2 = new THREE.Mesh(alaDron, whiteMetal);
+
+      alaDron2.position.y+=16;
+      alaDron2.position.z+=25;
+      alaDron2.rotation.y+=3.1416/4;
+
+      var alaDron3 = new THREE.Mesh(alaDron, whiteMetal);
+
+      alaDron3.position.y+=16;
+      alaDron3.position.z+=15;
+      alaDron3.position.x+=14;
+      alaDron3.rotation.y+=3.1416/4;
+
+      var alaDron4 = new THREE.Mesh(alaDron, whiteMetal);
+
+      alaDron4.position.y+=16;
+      alaDron4.position.z+=25;
+      alaDron4.position.x+=14;
+      alaDron4.rotation.y+=-3.1416/4;
+
+      var helice11 = new THREE.Mesh(helicesDron, yellowMetal);
+
+      helice11.position.y+=17;
+      helice11.position.z+=12;
+      helice11.position.x-=3;
+      helice11.rotation.y+=3.1416/2;
+
+      var helice22 = new THREE.Mesh(helicesDron, yellowMetal);
+
+      helice22.position.y+=17;
+      helice22.position.z+=30;
+      helice22.position.x-=3;
+      helice22.rotation.y+=3.1416/2;
+
+      var helice33 = new THREE.Mesh(helicesDron, yellowMetal);
+
+      helice33.position.y+=17;
+      helice33.position.z+=12;
+      helice33.position.x+=17;
+      helice33.rotation.y+=3.1416/2;
+
+      var helice44 = new THREE.Mesh(helicesDron, yellowMetal);
+
+      helice44.position.y+=17;
+      helice44.position.z+=30;
+      helice44.position.x+=17;
+      helice44.rotation.y+=3.1416/2;
+
+      helice1.add(helice11);
+      helice2.add(helice22);
+      helice3.add(helice33);
+      helice4.add(helice44);      
+
+      dron.add(helice1);
+      dron.add(helice2);
+      dron.add(helice3);
+      dron.add(helice4);
+      dron.add(alaDron1);
+      dron.add(alaDron2);
+      dron.add(alaDron3);
+      dron.add(alaDron4);
+      dron.add(cuerpoDron1);
+
+      dron.position.z-=3;
+
+      coche.add(dron);
+      coche.add(arribaCoche1);
       coche.add(trunk);
       coche.add(hood);
       coche.add(llantas);
