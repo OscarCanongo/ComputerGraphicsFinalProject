@@ -179,6 +179,7 @@
       var cuerpoDron = new THREE.BoxGeometry(10, 5, 1);
       var alaDron = new THREE.BoxGeometry(10, 0.5, 0.5);
       var helicesDron = new THREE.BoxGeometry(5, 0.5, 0.5);
+      var cuadritos = new THREE.BoxGeometry(10, 10, 0.1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -877,12 +878,32 @@
       cofre1.rotation.z+=3.1416/2;
       cofre1.position.z+=17;
       cofre1.position.x+=5;
+
+      var cofre22 = new THREE.Mesh(cofre, blackMetal);
+      cofre22.rotation.x+=3.1416/2;
+      cofre22.rotation.z+=3.1416/2;
+      cofre22.position.z+=17;
+      cofre22.position.x+=27;
+      cofre22.position.y+=2;
       
       cofre11.position.x+=22;
       cofre11.position.y+=10;
 
+      var cuadrito1 = new THREE.Mesh (cuadritos, blackMetal);
+      cuadrito1.position.y+=5;
+      cuadrito1.position.x+=27;
+      cuadrito1.position.z+=4;
+
+      var cuadrito2 = new THREE.Mesh (cuadritos, blackMetal);
+      cuadrito2.position.y+=5;
+      cuadrito2.position.x+=27;
+      cuadrito2.position.z+=29;
+
       cofre11.add(cofre1);
-      hood.add(cofre11)
+      hood.add(cuadrito1);
+      hood.add(cuadrito2);
+      hood.add(cofre22);
+      hood.add(cofre11);
       hood.add(parabrisas1);
       hood.add(parabrisas11);
 
@@ -890,6 +911,8 @@
       var abajoCoche1 = new THREE.Mesh(abajoCoche, blackMetal);
       var cajuela1= new THREE.Mesh(cajuela, blackMetal);
       var cajuela11= new THREE.Mesh(cajuela, blackMetal);
+      var cajuela22= new THREE.Mesh(cajuela, blackMetal);
+      var cajuela33= new THREE.Mesh(cajuela, blackMetal);
 
       abajoCoche1.rotation.x+=3.1416/2;
       abajoCoche1.position.z+=16.5;
@@ -904,6 +927,16 @@
       cajuela11.position.z+=16.5;
       cajuela11.position.x-=8;
 
+      cajuela22.rotation.y+=3.1416/2;
+      cajuela22.position.y+=5;
+      cajuela22.position.z+=16.5;
+      cajuela22.position.x+=22;
+
+      cajuela33.rotation.y+=3.1416/2;
+      cajuela33.position.y+=5;
+      cajuela33.position.z+=16.5;
+      cajuela33.position.x+=31.5;
+
       batea.position.x=-32;
       
       batea.add(cajuela1);
@@ -911,6 +944,8 @@
       trunk.add(abajoCoche1);
       trunk.add(batea);
       trunk.add(cajuela11);
+      trunk.add(cajuela22);
+      trunk.add(cajuela33);
 
       var arribaCoche1 = new THREE.Mesh(arribaCoche, blackMetal);
 
