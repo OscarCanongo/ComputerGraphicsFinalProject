@@ -173,7 +173,7 @@
       var parabrisas = new THREE.BoxGeometry( 5, 26, 1);
       var cofre = new THREE.BoxGeometry( 26, 10, 1);
       var abajoCofre = new THREE.BoxGeometry( 5, 16.5, 1);
-      var cajuela = new THREE.BoxGeometry( 26, 10, 1);
+      var cajuela = new THREE.BoxGeometry( 26, 9.5, 1);
       var abajoCoche = new THREE.BoxGeometry( 60, 26, 1);
       var arribaCoche = new THREE.BoxGeometry( 30, 26, 1);
       var cuerpoDron = new THREE.BoxGeometry(10, 5, 1);
@@ -797,11 +797,13 @@
       var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, glassTexture);
       var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
       var cuadroLado = new THREE.Mesh(lateralParado1, blackMetal);
+      var cuadroLadoAtras = new THREE.Mesh(lateralCoche1, blackMetal);
 
-      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, blackMetal );
+      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, blackMetal);
       var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1,glassTexture);
       var trianguloIzquierdo = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
       var cuadroLado1 = new THREE.Mesh(lateralParado1, blackMetal);
+      var cuadroLado1Atras = new THREE.Mesh(lateralCoche1, blackMetal);
 
       puertaDerecha.add(cuadroInferiorDerecho);
       puertaDerecha.add(cuadroSuperiorDerecho);
@@ -812,9 +814,11 @@
       puertaIzquierda.add(trianguloIzquierdo);
       
       lateralDerecho.add(cuadroLado);
+      lateralDerecho.add(cuadroLadoAtras);
       lateralDerecho.add(puertaDerecha);
 
       lateralIzquierdo.add(cuadroLado1);
+      lateralIzquierdo.add(cuadroLado1Atras);
       lateralIzquierdo.add(puertaIzquierda);
 
       //Lo que se tiene que hacer aquí es moverlo negativamente hasta que la rotacion sea del lugar requerido
@@ -840,6 +844,11 @@
       cuadroLado.position.x+=15;
       cuadroLado.position.y+=2.5;
 
+      cuadroLadoAtras.position.x-=25;
+
+      cuadroLado1Atras.position.x-=25;
+      cuadroLado1Atras.position.z-=0;
+
       lateralDerecho.position.z+=30;
       lateralDerecho.position.y+=5;
       lateralDerecho.position.x+=5;
@@ -856,11 +865,17 @@
       parabrisas1.position.y+=12.5;
       parabrisas1.position.x+=22;
 
+      var parabrisas11 = new THREE.Mesh(parabrisas, glassTexture);
+      parabrisas11.rotation.y+=3.1416/2;
+      parabrisas11.rotation.x+=3.1416/2;
+      parabrisas11.position.z+=16.5;
+      parabrisas11.position.y+=12.5;
+      parabrisas11.position.x-=7;
+
       var cofre1 = new THREE.Mesh(cofre, blackMetal);
       cofre1.rotation.x+=3.1416/2;
       cofre1.rotation.z+=3.1416/2;
       cofre1.position.z+=17;
-      cofre1.position.y=0;
       cofre1.position.x+=5;
       
       cofre11.position.x+=22;
@@ -869,10 +884,12 @@
       cofre11.add(cofre1);
       hood.add(cofre11)
       hood.add(parabrisas1);
+      hood.add(parabrisas11);
 
       //Parte trasera
       var abajoCoche1 = new THREE.Mesh(abajoCoche, blackMetal);
       var cajuela1= new THREE.Mesh(cajuela, blackMetal);
+      var cajuela11= new THREE.Mesh(cajuela, blackMetal);
 
       abajoCoche1.rotation.x+=3.1416/2;
       abajoCoche1.position.z+=16.5;
@@ -882,12 +899,18 @@
       cajuela1.position.y+=5;
       cajuela1.position.z+=16.5;
 
-      batea.position.x=-35;
+      cajuela11.rotation.y+=3.1416/2;
+      cajuela11.position.y+=5;
+      cajuela11.position.z+=16.5;
+      cajuela11.position.x-=8;
+
+      batea.position.x=-32;
       
       batea.add(cajuela1);
 
       trunk.add(abajoCoche1);
       trunk.add(batea);
+      trunk.add(cajuela11);
 
       var arribaCoche1 = new THREE.Mesh(arribaCoche, blackMetal);
 
@@ -960,7 +983,7 @@
       helice1.add(helice11);
       helice2.add(helice22);
       helice3.add(helice33);
-      helice4.add(helice44);      
+      helice4.add(helice44);
 
       dron.add(helice1);
       dron.add(helice2);
