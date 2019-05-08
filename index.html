@@ -13,6 +13,8 @@
   </head>
   <body>
     <script src="three.min.js"></script>
+    <script src="OBJLoader.js"></script>
+    <script src="MTLLoader.js"></script>
     <script>
       window.addEventListener("keydown", doKeyDown, true);
       // agregamos el "listener" para "escuchar" los eventos del teclado
@@ -78,21 +80,21 @@
            coche.position.z -= (Math.sin(coche.rotation.y)*2);
            coche.rotation.y += llanta1.rotation.y * 0.09;
            coche.rotation.y += llanta2.rotation.y * 0.09;
-            rotarLlantas -= 0.3;        
+            rotarLlantas -= 0.5;        
             break; 
           case 71:  /* G was pressed  go back */
            coche.position.x -= (Math.cos(coche.rotation.y)*2);
            coche.position.z += (Math.sin(coche.rotation.y)*2);
            coche.rotation.y -= llanta1.rotation.y * 0.09;
            coche.rotation.y -= llanta2.rotation.y * 0.09;
-            rotarLlantas += 0.3;          
+            rotarLlantas += 0.5;          
             break;
           case 72:  /* H was pressed right rotation*/
-            if(angleCoche>-1)
+            if(angleCoche>-0.5)
             angleCoche -= (0.01);           
             break;
             case 70:  /* F was pressed left rotation */
-            if(angleCoche<1)
+            if(angleCoche<0.5)
             angleCoche += (0.01);          
             break;
           case 85://U was pressed open front doors
@@ -165,7 +167,7 @@
       var asiento = new THREE.BoxGeometry( 10, 10,1);
       var seats = new THREE.TorusGeometry(35,2,5,100);//rueda del frisbee
       var rinCoche = new THREE.TorusGeometry(3,1,16,100);//rin del coche
-      var llantaCoche = new THREE.TorusGeometry(5,2,16,100);//rueda del coche
+      var llantaCoche = new THREE.TorusGeometry(7,1.5,16,100);//rueda del coche
       var lateralCoche1 = new THREE.BoxGeometry( 25, 10, 1 );
       var lateralCocheArriba1 = new THREE.BoxGeometry( 13, 5, 1 );
       var lateralCocheTriangulo1 = new THREE.BoxGeometry( 12, 5, 1);
@@ -760,27 +762,88 @@
       coche = new THREE.Object3D(); //El dron va dentro del grupo del coche
 
       //Llantas del coche
-      var rin1 = new THREE.Mesh(rinCoche, metal );
+      var rin1 = new THREE.Object3D();
+            var mtlLoaderLlanta11 = new THREE.MTLLoader();
+            mtlLoaderLlanta11.setTexturePath('modelos/');
+            mtlLoaderLlanta11.setPath('modelos/');
+            mtlLoaderLlanta11.load('Rims&Tires.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta11 = new THREE.OBJLoader();
+                objLoaderLlanta11.setMaterials(materials);
+                objLoaderLlanta11.setPath('modelos/');
+                objLoaderLlanta11.load('Rims&Tires.obj', function (object) {
+                    rin1.add(object);
+                });
+            });
+
       var llanta11 = new THREE.Mesh(llantaCoche, neumatic);
       llanta1.add(rin1);
+      rin1.rotation.y+=3.1416/2;
       llanta1.add(llanta11);
-      llanta1.position.z+=33;
+      llanta1.position.z+=32;
+      rin1.scale.set(0.25,0.25,0.25);
+      llanta11.scale.set(.75,.75,.75);
 
-      var rin2 = new THREE.Mesh(rinCoche, metal );
+      var rin2 = new THREE.Object3D();
+            var mtlLoaderLlanta22 = new THREE.MTLLoader();
+            mtlLoaderLlanta22.setTexturePath('modelos/');
+            mtlLoaderLlanta22.setPath('modelos/');
+            mtlLoaderLlanta22.load('Rims&Tires.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta22 = new THREE.OBJLoader();
+                objLoaderLlanta22.setMaterials(materials);
+                objLoaderLlanta22.setPath('modelos/');
+                objLoaderLlanta22.load('Rims&Tires.obj', function (object) {
+                    rin2.add(object);
+                });
+            });
       var llanta22 = new THREE.Mesh(llantaCoche, neumatic);
       llanta2.add(rin2);
       llanta2.add(llanta22);
+      rin2.rotation.y+=3.1416/2;
+      rin2.scale.set(0.25,0.25,0.25);
+      llanta22.scale.set(0.75,0.75,0.75);
 
-      var rin3 = new THREE.Mesh(rinCoche, metal );
+      var rin3 = new THREE.Object3D();
+            var mtlLoaderLlanta33 = new THREE.MTLLoader();
+            mtlLoaderLlanta33.setTexturePath('modelos/');
+            mtlLoaderLlanta33.setPath('modelos/');
+            mtlLoaderLlanta33.load('Rims&Tires.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Rims&Tires.obj', function (object) {
+                    rin3.add(object);
+                });
+            });
       var llanta33 = new THREE.Mesh(llantaCoche, neumatic);
       llanta3.add(rin3);
       llanta3.add(llanta33);
-      llanta3.position.z+=33;
+      llanta3.position.z+=32;
+      rin3.rotation.y+=3.1416/2;
+      rin3.scale.set(0.25,0.25,0.25);
+      llanta33.scale.set(0.75,0.75,0.75);
 
-      var rin4 = new THREE.Mesh(rinCoche, metal );
+      var rin4 = new THREE.Object3D();
+            var mtlLoaderLlanta44 = new THREE.MTLLoader();
+            mtlLoaderLlanta44.setTexturePath('modelos/');
+            mtlLoaderLlanta44.setPath('modelos/');
+            mtlLoaderLlanta44.load('Rims&Tires.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta44 = new THREE.OBJLoader();
+                objLoaderLlanta44.setMaterials(materials);
+                objLoaderLlanta44.setPath('modelos/');
+                objLoaderLlanta44.load('Rims&Tires.obj', function (object) {
+                    rin4.add(object);
+                });
+            });
       var llanta44 = new THREE.Mesh(llantaCoche,neumatic);
       llanta4.add(rin4);
       llanta4.add(llanta44);
+      rin4.rotation.y+=3.1416/2;
+      rin4.scale.set(0.25,0.25,0.25);
+      llanta44.scale.set(0.75,0.75,0.75);
 
       llantasDelanteras.add(llanta1);
       llantasDelanteras.add(llanta2);
