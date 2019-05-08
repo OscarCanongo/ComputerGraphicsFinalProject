@@ -857,17 +857,44 @@
       llantas.add(llantasTraseras);
 
       //Lateral del coche
-      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, blackMetal );
+      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, whiteMetal );
       var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, glassTexture);
       var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
-      var cuadroLado = new THREE.Mesh(lateralParado1, blackMetal);
-      var cuadroLadoAtras = new THREE.Mesh(lateralCoche1, blackMetal);
+      var cuadroLado = new THREE.Mesh(lateralParado1, whiteMetal);
+      var cuadroLadoAtras = new THREE.Mesh(lateralCoche1, whiteMetal);
+      var espejo = new THREE.Object3D();
+            var mtlLoaderEspejo1 = new THREE.MTLLoader();
+            mtlLoaderEspejo1.setTexturePath('modelos/');
+            mtlLoaderEspejo1.setPath('modelos/');
+            mtlLoaderEspejo1.load('espejo.mtl', function (materials) {
+                materials.preload();
+                var objLoaderEspejo1 = new THREE.OBJLoader();
+                objLoaderEspejo1.setMaterials(materials);
+                objLoaderEspejo1.setPath('modelos/');
+                objLoaderEspejo1.load('espejo.obj', function (object) {
+                    espejo.add(object);
+                });
+            });
 
-      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, blackMetal);
+      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, whiteMetal);
       var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1,glassTexture);
       var trianguloIzquierdo = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
-      var cuadroLado1 = new THREE.Mesh(lateralParado1, blackMetal);
-      var cuadroLado1Atras = new THREE.Mesh(lateralCoche1, blackMetal);
+      var cuadroLado1 = new THREE.Mesh(lateralParado1, whiteMetal);
+      var cuadroLado1Atras = new THREE.Mesh(lateralCoche1, whiteMetal);
+
+      var espejo2 = new THREE.Object3D();
+            var mtlLoaderEspejo2 = new THREE.MTLLoader();
+            mtlLoaderEspejo2.setTexturePath('modelos/');
+            mtlLoaderEspejo2.setPath('modelos/');
+            mtlLoaderEspejo2.load('espejoIzquierdo.mtl', function (materials) {
+                materials.preload();
+                var objLoaderEspejo2 = new THREE.OBJLoader();
+                objLoaderEspejo2.setMaterials(materials);
+                objLoaderEspejo2.setPath('modelos/');
+                objLoaderEspejo2.load('espejoIzquierdo.obj', function (object) {
+                    espejo2.add(object);
+                });
+            });
 
       puertaDerecha.add(cuadroInferiorDerecho);
       puertaDerecha.add(cuadroSuperiorDerecho);
@@ -876,6 +903,7 @@
       puertaIzquierda.add(cuadroInferiorIzquierdo);
       puertaIzquierda.add(cuadroSuperiorIzquierdo);
       puertaIzquierda.add(trianguloIzquierdo);
+      lateralDerecho.add(espejo);
       
       lateralDerecho.add(cuadroLado);
       lateralDerecho.add(cuadroLadoAtras);
@@ -884,6 +912,7 @@
       lateralIzquierdo.add(cuadroLado1);
       lateralIzquierdo.add(cuadroLado1Atras);
       lateralIzquierdo.add(puertaIzquierda);
+      lateralIzquierdo.add(espejo2);
 
       //Lo que se tiene que hacer aquí es moverlo negativamente hasta que la rotacion sea del lugar requerido
       cuadroSuperiorDerecho.position.y+=7.5;
@@ -891,6 +920,18 @@
       cuadroInferiorDerecho.position.x-=12; //Aqui exactamente se hace eso
       trianguloDerecho.position.y+=7.5;
       trianguloDerecho.position.x-=5.5;
+
+      espejo.rotation.z+=3.1416/2;
+      espejo.rotation.x-=3.1416/3;
+      espejo.position.z=1.1;
+      espejo.position.y=6;
+      espejo.position.x+=15;
+
+      espejo2.rotation.z+=3.1416/2;
+      espejo2.rotation.x-=3.1416/1.5;
+      espejo2.position.z-=1.1;
+      espejo2.position.y=6;
+      espejo2.position.x+=15;
 
       //Lo que se tiene que hacer aquí es moverlo negativamente hasta que la rotacion sea del lugar requerido
       cuadroSuperiorIzquierdo.position.y+=7.5;
