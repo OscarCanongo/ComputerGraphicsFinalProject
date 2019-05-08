@@ -857,11 +857,11 @@
       llantas.add(llantasTraseras);
 
       //Lateral del coche
-      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, whiteMetal );
+      var cuadroInferiorDerecho = new THREE.Mesh(lateralCoche1, metal);
       var cuadroSuperiorDerecho = new THREE.Mesh(lateralCocheArriba1, glassTexture);
       var trianguloDerecho = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
-      var cuadroLado = new THREE.Mesh(lateralParado1, whiteMetal);
-      var cuadroLadoAtras = new THREE.Mesh(lateralCoche1, whiteMetal);
+      var cuadroLado = new THREE.Mesh(lateralParado1, metal);
+      var cuadroLadoAtras = new THREE.Mesh(lateralCoche1, metal);
       var espejo = new THREE.Object3D();
             var mtlLoaderEspejo1 = new THREE.MTLLoader();
             mtlLoaderEspejo1.setTexturePath('modelos/');
@@ -876,11 +876,11 @@
                 });
             });
 
-      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, whiteMetal);
+      var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, metal);
       var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1,glassTexture);
       var trianguloIzquierdo = new THREE.Mesh(lateralCocheTriangulo1, glassTexture);
-      var cuadroLado1 = new THREE.Mesh(lateralParado1, whiteMetal);
-      var cuadroLado1Atras = new THREE.Mesh(lateralCoche1, whiteMetal);
+      var cuadroLado1 = new THREE.Mesh(lateralParado1, metal);
+      var cuadroLado1Atras = new THREE.Mesh(lateralCoche1, metal);
 
       var espejo2 = new THREE.Object3D();
             var mtlLoaderEspejo2 = new THREE.MTLLoader();
@@ -896,15 +896,55 @@
                 });
             });
 
+       var manija = new THREE.Object3D();
+            var mtlLoaderManija = new THREE.MTLLoader();
+            mtlLoaderManija.setTexturePath('modelos/');
+            mtlLoaderManija.setPath('modelos/');
+            mtlLoaderManija.load('Manija.mtl', function (materials) {
+                materials.preload();
+                var objLoaderManija = new THREE.OBJLoader();
+                objLoaderManija.setMaterials(materials);
+                objLoaderManija.setPath('modelos/');
+                objLoaderManija.load('Manija.obj', function (object) {
+                    manija.add(object);
+                });
+            });
+
+        var manija2 = new THREE.Object3D();
+            var mtlLoaderManija2 = new THREE.MTLLoader();
+            mtlLoaderManija2.setTexturePath('modelos/');
+            mtlLoaderManija2.setPath('modelos/');
+            mtlLoaderManija2.load('Manija.mtl', function (materials) {
+                materials.preload();
+                var objLoaderManija2 = new THREE.OBJLoader();
+                objLoaderManija2.setMaterials(materials);
+                objLoaderManija2.setPath('modelos/');
+                objLoaderManija2.load('Manija.obj', function (object) {
+                    manija2.add(object);
+                });
+            });          
+
       puertaDerecha.add(cuadroInferiorDerecho);
       puertaDerecha.add(cuadroSuperiorDerecho);
       puertaDerecha.add(trianguloDerecho);
+      puertaDerecha.add(manija);
+
+      manija.position.y+=3;
+      manija.rotation.z+=3.1416/2;
+      manija.position.z+=0.5;
+      manija.position.x-=20;
+
+      manija2.position.y+=3;
+      manija2.rotation.z+=3.1416/2;
+      manija2.position.z-=1;
+      manija2.position.x-=20;
 
       puertaIzquierda.add(cuadroInferiorIzquierdo);
       puertaIzquierda.add(cuadroSuperiorIzquierdo);
       puertaIzquierda.add(trianguloIzquierdo);
-      lateralDerecho.add(espejo);
+      puertaIzquierda.add(manija2);
       
+      lateralDerecho.add(espejo);
       lateralDerecho.add(cuadroLado);
       lateralDerecho.add(cuadroLadoAtras);
       lateralDerecho.add(puertaDerecha);
