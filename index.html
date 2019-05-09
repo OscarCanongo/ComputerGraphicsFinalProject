@@ -131,7 +131,7 @@
             dronboton=1;
             else{
             dronboton=0;
-            dron.position.y=0;
+            ovni.position.y=15;
             }
             break;
         }
@@ -1167,7 +1167,43 @@
       arribaCoche1.position.z+=16.5;
       arribaCoche1.position.x+=7;
 
-      var cuerpoDron1 = new THREE.Mesh(cuerpoDron, whiteMetal);
+      //ovni
+      /*var ovni = new THREE.Object3D();
+            var mtlLoaderLlanta33 = new THREE.MTLLoader();
+            mtlLoaderLlanta33.setTexturePath('modelos/');
+            mtlLoaderLlanta33.setPath('modelos/');
+            mtlLoaderLlanta33.load('Ovni.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Ovni.obj', function (object) {
+                    ovni.add(object);
+                });
+            });*/
+      
+      var loader = new THREE.TextureLoader();
+      var arbitroloader = new THREE.OBJLoader();
+        var ovni = new THREE.Object3D();
+        var textureper = new THREE.MeshLambertMaterial({
+                map: loader.load("modelos/Ovni.png")
+            });
+        arbitroloader.load(
+            'modelos/Ovni.obj ',
+            function (object) {
+                object.traverse(function (node) {
+                    if (node.isMesh) node.material = textureper;
+                });
+                ovni.add(object);
+                //per.scale.set(0.025,0.025,0.025);
+                //per.position.z=-5;
+                //per.rotation.x= THREE.Math.degToRad(-90);
+                //interior.add(per);  
+            }
+            
+        );      
+
+     /* var cuerpoDron1 = new THREE.Mesh(cuerpoDron, whiteMetal);
 
       cuerpoDron1.rotation.x += 3.14161/2;
       cuerpoDron1.position.y += 16;
@@ -1243,9 +1279,15 @@
       dron.add(alaDron4);
       dron.add(cuerpoDron1);
 
-      dron.position.z-=3;
+      dron.position.z-=3;*/
 
-      coche.add(dron);
+      ovni.position.y+=15;
+      ovni.position.x+=5;
+      ovni.position.z+=15;
+      ovni.scale.set(.02,.02,.02);
+      ovni.rotation.x-=3.1416/2;
+
+      coche.add(ovni);
       coche.add(arribaCoche1);
       coche.add(trunk);
       coche.add(hood);
@@ -1765,12 +1807,9 @@
         llanta1.rotation.y=angleCoche;
         llanta2.rotation.y=angleCoche;
         if(dronboton==1){
-          helice11.rotation.y+=1;
-          helice22.rotation.y+=1;
-          helice33.rotation.y+=1;
-          helice44.rotation.y+=1;
-          while(dron.position.y < 40)
-          dron.position.y+=0.1;
+          ovni.rotation.z+=1;
+          while(ovni.position.y < 40)
+          ovni.position.y+=0.1;
         }
         renderer.render(scene, camera);
       };
