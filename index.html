@@ -218,7 +218,6 @@
       var bluePlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("bluePlastic.jpg")});
       var neumatic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("neumatico.jpg")});
       var doorWood = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("door1.jpg")});
-      var doorMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("metalDoor.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
@@ -248,7 +247,6 @@
       gradasSeccion1 = new THREE.Object3D();
       gradasSeccion6 = new THREE.Object3D();
       gradaLateral1 = new THREE.Object3D();
-      puertasEntrada = new THREE.Object3D();
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
       var rectanguloRojo = new THREE.BoxGeometry(100, 300, 50);
@@ -277,7 +275,6 @@
       var proteccion1 = new THREE.BoxGeometry(50,25,5);
       var proteccion2 = new THREE.BoxGeometry(130,80,2);
       var puerta1 = new THREE.BoxGeometry(10,25,2);
-      var puerta2 = new THREE.BoxGeometry(20,25,2);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -365,8 +362,6 @@
       var prote3 = new THREE.Mesh(proteccion2, glassTexture);
       var prote4 = new THREE.Mesh(proteccion2, glassTexture);
       var prote5 = new THREE.Mesh(proteccion2, glassTexture);
-      //Puertas de entrada ------------------------------------------------------------------------------------
-      var puertaMetal = new THREE.Mesh(doorMetal, puerta2);
       //Posiciones --------------------------------------------------------------------------------------------
       paredBlanca.position.y = 90; paredBlanca.position.z = 250;
 
@@ -520,7 +515,6 @@
 
       doorPalco2.position.y = 165; doorPalco2.position.x = 320; doorPalco2.position.z = 975;
 
-      puertaMetal.position.y = 10; puertaMetal.position.x = 320; puertaMetal.position.z = 275;
 
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
@@ -730,7 +724,6 @@
       //--------------------------------------------
       gradaLateral2.rotation.y = 3.1416; gradaLateral2.position.x = 3; gradaLateral2.position.z = 1235;
       //---------------------------------------------
-      puertasEntrada.add(puertaMetal);
       
 
       bombonera.add(pared1);
@@ -754,7 +747,6 @@
       bombonera.add(gradasSeccion5);
       bombonera.add(gradaLateral1);
       bombonera.add(gradaLateral2);
-      //bombonera.add(puertasEntrada);
 
 
       //Bombonera se agrega al scene ---------------------------------------------------------------------------
@@ -1538,6 +1530,7 @@
     var techo = new THREE.ConeGeometry(60,40,100);
     var tuboCarrusel = new THREE.CylinderGeometry(1,1,43,100);
     var piso = new THREE.CylinderGeometry(60,60,3,100);
+    var tuboBase = new THREE.CylinderGeometry(8,8,43,100);
     //Creacion del techo ----------------------------------------------------------------------------------------------------------
     var roof = new THREE.Mesh(techo, pinkMetal);
     roof.position.x += 3; roof.position.y += 60; roof.position.z = 0;
@@ -1562,6 +1555,9 @@
     carruselTubo4.position.x += 3; carruselTubo4.position.y += 20; carruselTubo4.position.z += 52;
     carpa.add(carruselTubo4);
     //scene.add(carruselTubo4);
+    var tuboBaseCarrusel = new THREE.Mesh(tuboBase, blueMetal);
+    tuboBaseCarrusel.position.x += 3; tuboBaseCarrusel.position.y += 20; tuboBaseCarrusel.position.z += 5;
+    carpa.add(tuboBaseCarrusel);
     //Creacion del piso ---------------------------------------------------------------------------------------------------------------
     var floorC = new THREE.Mesh(piso, pinkMetal);
     floorC.position.x += 3; floorC.position.y -= 3; floorC.position.z = 0;
