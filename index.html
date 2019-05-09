@@ -1070,7 +1070,6 @@
       cuadrito2.position.z+=29;
       cuadrito2.scale.set(.9,.9,.9);
 
-
       var cuadrito3 = new THREE.Mesh (cuadritoss, blackMetal);
       cuadrito3.rotation.x+=3.1416/2;
       cuadrito3.position.y+=1;
@@ -1138,8 +1137,30 @@
       cajuela33.position.x+=31.5;
 
       batea.position.x=-32;
+
+      var manijita = new THREE.Object3D();
+            var mtlLoaderLlanta33 = new THREE.MTLLoader();
+            mtlLoaderLlanta33.setTexturePath('modelos/');
+            mtlLoaderLlanta33.setPath('modelos/');
+            mtlLoaderLlanta33.load('manijita.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('manijita.obj', function (object) {
+                    manijita.add(object);
+                });
+            });
+
+      manijita.position.z+=16;
+      manijita.position.x-=0.8;
+      manijita.position.y+=5;
+      manijita.rotation.x+=3.1416/2;
+      manijita.rotation.y+=3.1416;
+      manijita.scale.set(3,3,3);
       
       batea.add(cajuela1);
+      batea.add(manijita);
 
       trunk.add(abajoCoche1);
       trunk.add(batea);
