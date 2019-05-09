@@ -218,6 +218,7 @@
       var bluePlastic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("bluePlastic.jpg")});
       var neumatic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("neumatico.jpg")});
       var doorWood = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("door1.jpg")});
+      var blackLeather = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("blackLeather.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
@@ -247,6 +248,10 @@
       gradasSeccion1 = new THREE.Object3D();
       gradasSeccion6 = new THREE.Object3D();
       gradaLateral1 = new THREE.Object3D();
+      asientosPalco = new THREE.Object3D();
+      seccionAsientosPalco = new THREE.Object3D();
+      seccionAsientosPalco2 = new THREE.Object3D();
+      var asientosPalco5 = new THREE.Object3D();
 
       var rectanguloBlanco = new THREE.BoxGeometry(600, 200, 50);
       var rectanguloRojo = new THREE.BoxGeometry(100, 300, 50);
@@ -275,6 +280,8 @@
       var proteccion1 = new THREE.BoxGeometry(50,25,5);
       var proteccion2 = new THREE.BoxGeometry(130,80,2);
       var puerta1 = new THREE.BoxGeometry(10,25,2);
+      var asientoPalco = new THREE.BoxGeometry(10,2,8);
+      var respaldoPalco = new THREE.BoxGeometry(10,15,2);
       //Pared 1-----------------------------------------------------------------------------------------
       var paredBlanca = new THREE.Mesh(rectanguloBlanco, whiteMetal);
       var paredRoja = new THREE.Mesh(rectanguloRojo, redMetal);
@@ -338,12 +345,16 @@
       var glassPalco2 = new THREE.Mesh(glassP2, glassTexture);
       var glassPalco3 = new THREE.Mesh(glassP2, glassTexture);
       var doorPalco = new THREE.Mesh(puerta1, doorWood);
+      var asientoP1 = new THREE.Mesh(asientoPalco, blackLeather);
+      var respaldoP1 = new THREE.Mesh(respaldoPalco, blackLeather);
       //Palco 2 -----------------------------------------------------------------------------------------------
       var floorPalco2 = new THREE.Mesh(pisoP, redMetal);
       var glassPalco4 = new THREE.Mesh(glassP, glassTexture);
       var glassPalco5 = new THREE.Mesh(glassP2, glassTexture);
       var glassPalco6 = new THREE.Mesh(glassP2, glassTexture);
       var doorPalco2 = new THREE.Mesh(puerta1, doorWood);
+      var asientoP2 = new THREE.Mesh(asientoPalco, blackLeather);
+      var respaldoP2 = new THREE.Mesh(respaldoPalco, blackLeather);
       //Techo ------------------------------------------------------------------------------------------------
       var techo1 = new THREE.Mesh(techoB, whiteMetal);
       var techo2 = new THREE.Mesh(techoB, whiteMetal);
@@ -515,6 +526,14 @@
 
       doorPalco2.position.y = 165; doorPalco2.position.x = 320; doorPalco2.position.z = 975;
 
+      asientoP1.position.y = 157; asientoP1.position.x = 350; asientoP1.position.z = 295;
+
+      respaldoP1.position.y = 160; respaldoP1.position.x = 350; respaldoP1.position.z = 290;
+
+      asientoP2.position.y = 157; asientoP2.position.x = 350; asientoP2.position.z = 960;
+
+      respaldoP2.position.y = 160; respaldoP2.position.x = 350; respaldoP2.position.z = 965;
+
 
       pared1.add(paredBlanca);
       pared1.add(paredRoja);
@@ -564,11 +583,41 @@
       goal2.add(futTubo3);
       goal2.add(futTubo4);
       goal2.add(futTubo6);
+      //---------------------------------------------
+      asientosPalco.add(asientoP1);
+      asientosPalco.add(respaldoP1);
+      var asientosPalco2 = asientosPalco.clone();
+      var asientosPalco3 = asientosPalco.clone();
+      var asientosPalco4 = asientosPalco.clone();
+      //---------------------------------------------
+      asientosPalco2.position.x = 12;
+      asientosPalco3.position.x = -12;
+      asientosPalco4.position.x = 24;
+      seccionAsientosPalco.add(asientosPalco);
+      seccionAsientosPalco.add(asientosPalco2);
+      seccionAsientosPalco.add(asientosPalco3);
+      seccionAsientosPalco.add(asientosPalco4);
+      //---------------------------------------------
+      asientosPalco5.add(asientoP2);
+      asientosPalco5.add(respaldoP2);
+      var asientosPalco6 = asientosPalco5.clone();
+      var asientosPalco7 = asientosPalco5.clone();
+      var asientosPalco8 = asientosPalco5.clone();
+      //---------------------------------------------
+      asientosPalco6.position.x = 12;
+      asientosPalco7.position.x = -12;
+      asientosPalco8.position.x = 24;
+      seccionAsientosPalco2.add(asientosPalco5);
+      seccionAsientosPalco2.add(asientosPalco6);
+      seccionAsientosPalco2.add(asientosPalco7);
+      seccionAsientosPalco2.add(asientosPalco8);
+      //----------------------------------------------
       palco.add(floorPalco);
       palco.add(glassPalco);
       palco.add(glassPalco2);
       palco.add(glassPalco3);
       palco.add(doorPalco);
+      palco.add(seccionAsientosPalco);
       var palco2 = palco.clone();
       var palco3 = palco.clone();
       var palco4 = palco.clone();
@@ -590,6 +639,7 @@
       palco5.add(glassPalco5);
       palco5.add(glassPalco6);
       palco5.add(doorPalco2);
+      palco5.add(seccionAsientosPalco2);
       var palco6 = palco5.clone();
       var palco7 = palco5.clone();
       var palco8 = palco5.clone();
@@ -612,6 +662,10 @@
       //-------------------------------
       palcoSeccion4.position.x = -700;
       //-------------------------------
+      seccionAsientosPalco.add(asientosPalco);
+      seccionAsientosPalco.add(asientosPalco2);
+      seccionAsientosPalco.add(asientosPalco3);
+      seccionAsientosPalco.add(asientosPalco4);
       techos.add(techo1);
       techos.add(techo2);
       techos.add(techo3);
@@ -723,7 +777,8 @@
       var gradaLateral2 = gradaLateral1.clone();
       //--------------------------------------------
       gradaLateral2.rotation.y = 3.1416; gradaLateral2.position.x = 3; gradaLateral2.position.z = 1235;
-      //---------------------------------------------
+      
+      
       
 
       bombonera.add(pared1);
@@ -749,8 +804,10 @@
       bombonera.add(gradaLateral2);
 
 
+
       //Bombonera se agrega al scene ---------------------------------------------------------------------------
       scene.add(bombonera);
+      
 
       //Grupos coche--------------------------------------------------------------------------------------------
       llanta1 = new THREE.Object3D();
