@@ -182,6 +182,7 @@
       var alaDron = new THREE.BoxGeometry(10, 0.5, 0.5);
       var helicesDron = new THREE.BoxGeometry(5, 0.5, 0.5);
       var cuadritos = new THREE.BoxGeometry(10, 10, 0.1);
+      var cuadritoss = new THREE.BoxGeometry(10, 10, 1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -1032,18 +1033,19 @@
       parabrisas11.position.y+=12.5;
       parabrisas11.position.x-=7;
 
-      var cofre1 = new THREE.Mesh(cofre, blackMetal);
+      var cofre1 = new THREE.Mesh(cofre, metal);
       cofre1.rotation.x+=3.1416/2;
       cofre1.rotation.z+=3.1416/2;
       cofre1.position.z+=17;
       cofre1.position.x+=5;
 
-      var cofre22 = new THREE.Mesh(cofre, blackMetal);
+      var cofre22 = new THREE.Mesh(cofre, metal);
       cofre22.rotation.x+=3.1416/2;
       cofre22.rotation.z+=3.1416/2;
       cofre22.position.z+=17;
       cofre22.position.x+=27;
       cofre22.position.y+=2;
+      cofre22.scale.set(.75,.75,.75);
       
       cofre11.position.x+=22;
       cofre11.position.y+=10;
@@ -1052,13 +1054,43 @@
       cuadrito1.position.y+=5;
       cuadrito1.position.x+=27;
       cuadrito1.position.z+=4;
+      cuadrito1.scale.set(.9,.9,.9);
 
       var cuadrito2 = new THREE.Mesh (cuadritos, blackMetal);
       cuadrito2.position.y+=5;
       cuadrito2.position.x+=27;
       cuadrito2.position.z+=29;
+      cuadrito2.scale.set(.9,.9,.9);
+
+
+      var cuadrito3 = new THREE.Mesh (cuadritoss, blackMetal);
+      cuadrito3.rotation.x+=3.1416/2;
+      cuadrito3.position.y+=1;
+      cuadrito3.position.z+=17.5;
+      cuadrito3.position.x+=5;
+      cuadrito3.scale.set(0.5,0.5,0.5);
+
+      var motor = new THREE.Object3D();
+            var mtlLoaderLlanta33 = new THREE.MTLLoader();
+            mtlLoaderLlanta33.setTexturePath('modelos/');
+            mtlLoaderLlanta33.setPath('modelos/');
+            mtlLoaderLlanta33.load('dodgeengine.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('dodgeengine.obj', function (object) {
+                    motor.add(object);
+                });
+            });
+      motor.position.z+=10;
+      motor.position.y+=5;
+      motor.position.x+=27;  
+      motor.scale.set(0.5,0.5,0.5);     
 
       cofre11.add(cofre1);
+      cofre11.add(cuadrito3);
+      hood.add(motor);  
       hood.add(cuadrito1);
       hood.add(cuadrito2);
       hood.add(cofre22);
@@ -1069,9 +1101,10 @@
       //Parte trasera
       var abajoCoche1 = new THREE.Mesh(abajoCoche, blackMetal);
       var cajuela1= new THREE.Mesh(cajuela, blackMetal);
-      var cajuela11= new THREE.Mesh(cajuela, blackMetal);
-      var cajuela22= new THREE.Mesh(cajuela, blackMetal);
+      var cajuela11= new THREE.Mesh(cajuela, metal);
+      var cajuela22= new THREE.Mesh(cajuela, metal);
       var cajuela33= new THREE.Mesh(cajuela, blackMetal);
+      cajuela33.scale.set(1,.9,1);
 
       abajoCoche1.rotation.x+=3.1416/2;
       abajoCoche1.position.z+=16.5;
