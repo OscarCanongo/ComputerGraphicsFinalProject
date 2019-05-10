@@ -2003,6 +2003,7 @@
       var pointLight4 = new THREE.PointLight(0xffffff,1,2000,2);
       var pointLight5 = new THREE.PointLight(0xffffff,1,2000,2);
       var pointLight6 = new THREE.PointLight(0xffffff,1,2000,2);
+      var pointLight7 = new THREE.PointLight(0x7d2181,1,0,1);
 
       // set its position
       pointLight.position.x = -2000;
@@ -2113,11 +2114,15 @@
           helice22.rotation.y+=1;
           helice33.rotation.y+=1;
           helice44.rotation.y+=1;
+          coche.add(pointLight7);
           while(ovni.position.y < 40){
             ovni.position.y+=0.1;
             dron.position.y+=0.1;
           }
         }
+        else
+        coche.remove(pointLight7);
+      
         renderer.render(scene, camera);
       };
       render();
