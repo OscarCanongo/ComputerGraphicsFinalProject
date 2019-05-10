@@ -1730,28 +1730,26 @@
 
 
     //Caballo 2----------------------------------------------------------------------------------------------------------
-    var cuerpo2 = new THREE.Mesh(cuerpoCaballo, blueMetal);
-    cuerpo2.position.y = 0; cuerpo2.position.x = 0; cuerpo2.position.z = 0;
-    cuerpo2.rotation.z = 3.1416/2;
-    var patas13 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas13.position.y -= 3; patas13.position.x -=4; patas13.position.z = 0;
-    var patas14 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas14.position.y -= 3; patas14.position.x += 4; patas13.position.z = 0;
-    var cola2 = new THREE.Mesh(colaCaballo, blueMetal);
-    cola2.position.y+=3; cola2.position.x+=5; cola2.position.z=0;
-    cola2.rotation.z=3*3.1416/4;
-    var cabeza2 = new THREE.Mesh(cabezaCaballo, purpleMetal);
-    cabeza2.position.y+=3; cabeza2.position.x-=5; cabeza2.position.z=0;
+    var caballo2 = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Tigre.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Tigre.obj', function (object) {
+                  caballo2.add(object);
+                });
+              });
 
-    caballo2.add(cuerpo2);
-    caballo2.add(patas13);
-    caballo2.add(patas14);  
-    caballo2.add(cola2); 
-    caballo2.add(cabeza2);
-    caballo2.position.y+=20;
+    caballo2.position.y+=5;
     caballo2.position.x += 100; 
     caballo2.position.z+=20;
-    caballo2.rotation.y=3*3.1416/2;
+    caballo2.rotation.x-=3.1416/2;
+    caballo2.rotation.z+=3.1416;
+    caballo2.scale.set(.02,.02,.02);
     //scene.add(caballo2);
 
     //Caballo 3----------------------------------------------------------------------------------------------------------
