@@ -19,7 +19,7 @@
     window.addEventListener("keydown", doKeyDown, true);
       // agregamos el "listener" para "escuchar" los eventos del teclado
 
-      var zpos = 0;
+      var zpos = 680;
       var xpos = 10;
       var ypos = 0;
       var x = 0.0;
@@ -1997,14 +1997,17 @@
       document.body.appendChild(renderer.domElement);
 
       // create some point lights
-      var pointLight = new THREE.PointLight(0xffffff);
-      var pointLight2 = new THREE.PointLight(0xffffff);
-      var pointLight3 = new THREE.PointLight(0xffffff);
+      var pointLight = new THREE.PointLight(0xffffff,0.5,7000,2);
+      var pointLight2 = new THREE.PointLight(0xffffff,0.5,0,2);
+      var pointLight3 = new THREE.PointLight(0xffffff,1,0,2);
+      var pointLight4 = new THREE.PointLight(0xffffff,1,2000,2);
+      var pointLight5 = new THREE.PointLight(0xffffff,1,2000,2);
+      var pointLight6 = new THREE.PointLight(0xffffff,1,2000,2);
 
       // set its position
-      pointLight.position.x = 10;
-      pointLight.position.y = 50;
-      pointLight.position.z = 130;
+      pointLight.position.x = -2000;
+      pointLight.position.y = 1000;
+      pointLight.position.z = 850;
 
       // add to the scene
       scene.add(pointLight);
@@ -2017,9 +2020,28 @@
 
       // set its position
       pointLight3.position.x = 10;
-      pointLight3.position.y = 200;
-      pointLight3.position.z = 830;
+      pointLight3.position.y = 1000;
+      pointLight3.position.z = 680;
       scene.add(pointLight3);
+
+      // set its position
+      pointLight4.position.x = 10;
+      pointLight4.position.y = 1000;
+      pointLight4.position.z = -500;
+      scene.add(pointLight4);
+
+      // set its position
+      pointLight5.position.x = 10;
+      pointLight5.position.y = 1000;
+      pointLight5.position.z = 1800;
+      scene.add(pointLight5);
+
+      // set its position
+      pointLight6.position.x = 1500;
+      pointLight6.position.y = 1000;
+      pointLight6.position.z = 680;
+      scene.add(pointLight6);
+      
       
 
       // add to the scene
