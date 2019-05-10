@@ -1753,52 +1753,48 @@
     //scene.add(caballo2);
 
     //Caballo 3----------------------------------------------------------------------------------------------------------
-    var cuerpo3 = new THREE.Mesh(cuerpoCaballo, blueMetal);
-    cuerpo3.position.y = 0; cuerpo3.position.x = 0; cuerpo3.position.z = 0;
-    cuerpo3.rotation.z = 3.1416/2;
-    var patas15 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas15.position.y -= 3; patas15.position.x -=4; patas15.position.z = 0;
-    var patas16 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas16.position.y -= 3; patas16.position.x += 4; patas16.position.z = 0;
-    var cola3 = new THREE.Mesh(colaCaballo, blueMetal);
-    cola3.position.y+=3; cola3.position.x+=5; cola3.position.z=0;
-    cola3.rotation.z=3*3.1416/4;
-    var cabeza3 = new THREE.Mesh(cabezaCaballo, purpleMetal);
-    cabeza3.position.y+=3; cabeza3.position.x-=5; cabeza3.position.z=0;
+    var caballo3 = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Triceratops.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Triceratops.obj', function (object) {
+                  caballo3.add(object);
+                });
+              });
 
-    caballo3.add(cuerpo3);
-    caballo3.add(patas15);
-    caballo3.add(patas16);  
-    caballo3.add(cola3); 
-    caballo3.add(cabeza3);
-    caballo3.position.y+=10; 
+    caballo3.position.y+=5; 
     caballo3.position.z+=52;
     caballo3.position.x+=23;
-    caballo3.rotation.y=3.1416;
+    caballo3.rotation.x=-3.1416/2;
+    caballo3.rotation.z=3.1416/2;
+    caballo3.scale.set(.05,.05,.05);
     //scene.add(caballo3);
 
     //Caballo 4---------------------------------------------------------------------------------------------------------------
-    var cuerpo4 = new THREE.Mesh(cuerpoCaballo, blueMetal);
-    cuerpo4.position.y = 0; cuerpo4.position.x = 0; cuerpo4.position.z = 0;
-    cuerpo4.rotation.z = 3.1416/2;
-    var patas17 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas17.position.y -= 3; patas17.position.x -=4; patas17.position.z = 0;
-    var patas18 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas18.position.y -= 3; patas18.position.x += 4; patas18.position.z = 0;
-    var cola4 = new THREE.Mesh(colaCaballo, blueMetal);
-    cola4.position.y+=3; cola4.position.x+=5; cola4.position.z=0;
-    cola4.rotation.z=3*3.1416/4;
-    var cabeza4 = new THREE.Mesh(cabezaCaballo, purpleMetal);
-    cabeza4.position.y+=3; cabeza4.position.x-=5; cabeza4.position.z=0;
+    var caballo4 = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Tigre.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Tigre.obj', function (object) {
+                  caballo4.add(object);
+                });
+              });
 
-    caballo4.add(cuerpo4);
-    caballo4.add(patas17);
-    caballo4.add(patas18);  
-    caballo4.add(cola4); 
-    caballo4.add(cabeza4);
-    caballo4.position.y+=20; 
+    caballo4.position.y+=5; 
     caballo4.position.z+=5;
-    caballo4.rotation.y=3.1416/2;
+    caballo4.rotation.x-=3.1416/2;
+    caballo4.rotation.z-=2*3.1416;
+    caballo4.scale.set(.02,.02,.02);
     //scene.add(caballo4);
     
     //Grupo de caballos -------------------------------------------------------------------------------------------------------
