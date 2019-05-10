@@ -1,0 +1,9 @@
+# Exported from 3D Builder
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd texture_0_4958269463772742081.png
+
+newmtl Mat_1
+Kd 1.000000 1.000000 1.000000
+map_Kd texture_1_373769621576435952.png

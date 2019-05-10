@@ -1,25 +1,25 @@
 <html>
-  <head>
-    <title>Proyecto Final</title>
-    <style>
-      canvas {
-        width: 100%;
-        height: 100%;
-      }
-      body {
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <script src="three.min.js"></script>
-    <script src="OBJLoader.js"></script>
-    <script src="MTLLoader.js"></script>
-    <script>
-      window.addEventListener("keydown", doKeyDown, true);
+<head>
+  <title>Proyecto Final</title>
+  <style>
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <script src="three.min.js"></script>
+  <script src="OBJLoader.js"></script>
+  <script src="MTLLoader.js"></script>
+  <script>
+    window.addEventListener("keydown", doKeyDown, true);
       // agregamos el "listener" para "escuchar" los eventos del teclado
 
-      var zpos = 680;
+      var zpos = 0;
       var xpos = 10;
       var ypos = 0;
       var x = 0.0;
@@ -42,19 +42,19 @@
 
           //Camera
           case 38 /* Up arrow was pressed */:
-            zpos= (zpos-(5*Math.cos(ypos))); 
-            xpos= (xpos-(5*Math.sin(ypos)));
-            break;
+          zpos= (zpos-(5*Math.cos(ypos))); 
+          xpos= (xpos-(5*Math.sin(ypos)));
+          break;
           case 40 /* Down arrow was pressed */:
-            zpos= (zpos+(5*Math.cos(ypos)));
-            xpos= (xpos+(5*Math.sin(ypos)));
-            break;
+          zpos= (zpos+(5*Math.cos(ypos)));
+          xpos= (xpos+(5*Math.sin(ypos)));
+          break;
           case 37 /* Left arrow was pressed */:
-            ypos += 0.05;
-            break;
+          ypos += 0.05;
+          break;
           case 39 /* Right arrow was pressed */:
-            ypos -= 0.05;
-            break;
+          ypos -= 0.05;
+          break;
 
           //Camera WASD
           case 87:  /* W was pressed */
@@ -62,80 +62,81 @@
             //xpos= (xpos-(0.8*Math.sin(ypos)));   
             camera.position.y +=2;                       
             break;
-          case 83:  /* S was pressed */
+            case 83:  /* S was pressed */
             //zpos= (zpos+(0.8*Math.cos(ypos)));
             //xpos= (xpos+(0.8*Math.sin(ypos)));
             camera.position.y -= 2;                                                
             break;
-          case 68:  /* D was pressed */
+            case 68:  /* D was pressed */
             ypos -= 0.05;             
             break;
-          case 65:  /* A was pressed */
+            case 65:  /* A was pressed */
             ypos += 0.05;         
             break;
 
           //Coche
           case 84:  /* T was pressed  go forward */
-           coche.position.x += (Math.cos(coche.rotation.y)*2);
-           coche.position.z -= (Math.sin(coche.rotation.y)*2);
-           coche.rotation.y += llanta1.rotation.y * 0.09;
-           coche.rotation.y += llanta2.rotation.y * 0.09;
-            rotarLlantas -= 0.5;        
-            break; 
+          coche.position.x += (Math.cos(coche.rotation.y)*2);
+          coche.position.z -= (Math.sin(coche.rotation.y)*2);
+          coche.rotation.y += llanta1.rotation.y * 0.09;
+          coche.rotation.y += llanta2.rotation.y * 0.09;
+          rotarLlantas -= 0.5;        
+          break; 
           case 71:  /* G was pressed  go back */
-           coche.position.x -= (Math.cos(coche.rotation.y)*2);
-           coche.position.z += (Math.sin(coche.rotation.y)*2);
-           coche.rotation.y -= llanta1.rotation.y * 0.09;
-           coche.rotation.y -= llanta2.rotation.y * 0.09;
-            rotarLlantas += 0.5;          
-            break;
+          coche.position.x -= (Math.cos(coche.rotation.y)*2);
+          coche.position.z += (Math.sin(coche.rotation.y)*2);
+          coche.rotation.y -= llanta1.rotation.y * 0.09;
+          coche.rotation.y -= llanta2.rotation.y * 0.09;
+          rotarLlantas += 0.5;          
+          break;
           case 72:  /* H was pressed right rotation*/
-            if(angleCoche>-0.5)
+          if(angleCoche>-0.5)
             angleCoche -= (0.01);           
-            break;
-            case 70:  /* F was pressed left rotation */
-            if(angleCoche<0.5)
+          break;
+          case 70:  /* F was pressed left rotation */
+          if(angleCoche<0.5)
             angleCoche += (0.01);          
-            break;
+          break;
           case 85://U was pressed open front doors
-            if(puertaDerecha.rotation.y<1.5){
+          if(puertaDerecha.rotation.y<1.5){
             puertaDerecha.rotation.y+=0.1;
             puertaIzquierda.rotation.y-=0.1;
-            } 
-            break;
+          } 
+          break;
           case 74://J was pressed close front doors
-           if(puertaDerecha.rotation.y>=0.1){
+          if(puertaDerecha.rotation.y>=0.1){
             puertaDerecha.rotation.y-=0.1;
             puertaIzquierda.rotation.y+=0.1;
-            }
-            break;
+          }
+          break;
           case 89:  /* Y was pressed open the hood*/
-            if(cofre11.rotation.z<1)
-             cofre11.rotation.z += 0.1;         
-            break;
-          case 82:  /* R was pressed close the hood  */
-           if(cofre11.rotation.z>=0.1)
+          if(cofre11.rotation.z<1)
+           cofre11.rotation.z += 0.1;         
+         break;
+         case 82:  /* R was pressed close the hood  */
+         if(cofre11.rotation.z>=0.1)
            cofre11.rotation.z -= 0.1;         
-            break;  
-          case 86: /* V was pressed open the trunk*/
-            if(batea.rotation.z<1.5)
-            batea.rotation.z+=0.1;
-            break;
-          case 66: /* B was pressed close the trunk*/
-            if(batea.rotation.z>=0.1)
-            batea.rotation.z-=0.1;
-            break;
-          case 88: /* X was pressed release a drone that flies above the car*/
-                   /* X was pressed reatach the drone that flies above the car*/
-            if(dronboton==0)
-            dronboton=1;
-            else{
-            dronboton=0;
-            ovni.position.y=15;
-            }
-            break;
+         break;  
+         case 86: /* V was pressed open the trunk*/
+         if(batea.rotation.z<1.5)
+          batea.rotation.z+=0.1;
+        break;
+        case 66: /* B was pressed close the trunk*/
+        if(batea.rotation.z>=0.1)
+          batea.rotation.z-=0.1;
+        break;
+        case 88: /* X was pressed release a drone that flies above the car*/
+        /* X was pressed reatach the drone that flies above the car*/
+        if(dronboton==0)
+          dronboton=1;
+        else{
+          dronboton=0;
+          ovni.position.y=2;
+          dron.position.y=2;
         }
+        break;
       }
+    }
 
       // three basic components of a scene
       var scene = new THREE.Scene();
@@ -144,7 +145,7 @@
         window.innerWidth / window.innerHeight,
         0.01,
         1000
-      );
+        );
       camera.position.y=30;
 
       var renderer = new THREE.WebGLRenderer();
@@ -183,11 +184,12 @@
       var helicesDron = new THREE.BoxGeometry(5, 0.5, 0.5);
       var cuadritos = new THREE.BoxGeometry(10, 10, 0.1);
       var cuadritoss = new THREE.BoxGeometry(10, 10, 1);
+      var placa = new THREE.BoxGeometry(7, 5, 0.1);
 
       // create a Lambert material  
       var LambertMaterial = new THREE.MeshLambertMaterial({
         color: 0xc0c0c0
-        });
+      });
 
       // create a wireframe material
       var meshMaterial = new THREE.MeshBasicMaterial({
@@ -219,6 +221,7 @@
       var neumatic = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("neumatico.jpg")});
       var doorWood = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("door1.jpg")});
       var blackLeather = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("blackLeather.jpg")});
+      var placas = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("placas.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
@@ -836,18 +839,18 @@
 
       //Llantas del coche
       var rin1 = new THREE.Object3D();
-            var mtlLoaderLlanta11 = new THREE.MTLLoader();
-            mtlLoaderLlanta11.setTexturePath('modelos/');
-            mtlLoaderLlanta11.setPath('modelos/');
-            mtlLoaderLlanta11.load('Rims&Tires.mtl', function (materials) {
-                materials.preload();
-                var objLoaderLlanta11 = new THREE.OBJLoader();
-                objLoaderLlanta11.setMaterials(materials);
-                objLoaderLlanta11.setPath('modelos/');
-                objLoaderLlanta11.load('Rims&Tires.obj', function (object) {
-                    rin1.add(object);
-                });
-            });
+      var mtlLoaderLlanta11 = new THREE.MTLLoader();
+      mtlLoaderLlanta11.setTexturePath('modelos/');
+      mtlLoaderLlanta11.setPath('modelos/');
+      mtlLoaderLlanta11.load('Rims&Tires.mtl', function (materials) {
+        materials.preload();
+        var objLoaderLlanta11 = new THREE.OBJLoader();
+        objLoaderLlanta11.setMaterials(materials);
+        objLoaderLlanta11.setPath('modelos/');
+        objLoaderLlanta11.load('Rims&Tires.obj', function (object) {
+          rin1.add(object);
+        });
+      });
 
       var llanta11 = new THREE.Mesh(llantaCoche, neumatic);
       llanta1.add(rin1);
@@ -858,18 +861,18 @@
       llanta11.scale.set(.75,.75,.75);
 
       var rin2 = new THREE.Object3D();
-            var mtlLoaderLlanta22 = new THREE.MTLLoader();
-            mtlLoaderLlanta22.setTexturePath('modelos/');
-            mtlLoaderLlanta22.setPath('modelos/');
-            mtlLoaderLlanta22.load('Rims&Tires.mtl', function (materials) {
-                materials.preload();
-                var objLoaderLlanta22 = new THREE.OBJLoader();
-                objLoaderLlanta22.setMaterials(materials);
-                objLoaderLlanta22.setPath('modelos/');
-                objLoaderLlanta22.load('Rims&Tires.obj', function (object) {
-                    rin2.add(object);
-                });
-            });
+      var mtlLoaderLlanta22 = new THREE.MTLLoader();
+      mtlLoaderLlanta22.setTexturePath('modelos/');
+      mtlLoaderLlanta22.setPath('modelos/');
+      mtlLoaderLlanta22.load('Rims&Tires.mtl', function (materials) {
+        materials.preload();
+        var objLoaderLlanta22 = new THREE.OBJLoader();
+        objLoaderLlanta22.setMaterials(materials);
+        objLoaderLlanta22.setPath('modelos/');
+        objLoaderLlanta22.load('Rims&Tires.obj', function (object) {
+          rin2.add(object);
+        });
+      });
       var llanta22 = new THREE.Mesh(llantaCoche, neumatic);
       llanta2.add(rin2);
       llanta2.add(llanta22);
@@ -878,18 +881,18 @@
       llanta22.scale.set(0.75,0.75,0.75);
 
       var rin3 = new THREE.Object3D();
-            var mtlLoaderLlanta33 = new THREE.MTLLoader();
-            mtlLoaderLlanta33.setTexturePath('modelos/');
-            mtlLoaderLlanta33.setPath('modelos/');
-            mtlLoaderLlanta33.load('Rims&Tires.mtl', function (materials) {
-                materials.preload();
-                var objLoaderLlanta33 = new THREE.OBJLoader();
-                objLoaderLlanta33.setMaterials(materials);
-                objLoaderLlanta33.setPath('modelos/');
-                objLoaderLlanta33.load('Rims&Tires.obj', function (object) {
-                    rin3.add(object);
-                });
-            });
+      var mtlLoaderLlanta33 = new THREE.MTLLoader();
+      mtlLoaderLlanta33.setTexturePath('modelos/');
+      mtlLoaderLlanta33.setPath('modelos/');
+      mtlLoaderLlanta33.load('Rims&Tires.mtl', function (materials) {
+        materials.preload();
+        var objLoaderLlanta33 = new THREE.OBJLoader();
+        objLoaderLlanta33.setMaterials(materials);
+        objLoaderLlanta33.setPath('modelos/');
+        objLoaderLlanta33.load('Rims&Tires.obj', function (object) {
+          rin3.add(object);
+        });
+      });
       var llanta33 = new THREE.Mesh(llantaCoche, neumatic);
       llanta3.add(rin3);
       llanta3.add(llanta33);
@@ -899,18 +902,18 @@
       llanta33.scale.set(0.75,0.75,0.75);
 
       var rin4 = new THREE.Object3D();
-            var mtlLoaderLlanta44 = new THREE.MTLLoader();
-            mtlLoaderLlanta44.setTexturePath('modelos/');
-            mtlLoaderLlanta44.setPath('modelos/');
-            mtlLoaderLlanta44.load('Rims&Tires.mtl', function (materials) {
-                materials.preload();
-                var objLoaderLlanta44 = new THREE.OBJLoader();
-                objLoaderLlanta44.setMaterials(materials);
-                objLoaderLlanta44.setPath('modelos/');
-                objLoaderLlanta44.load('Rims&Tires.obj', function (object) {
-                    rin4.add(object);
-                });
-            });
+      var mtlLoaderLlanta44 = new THREE.MTLLoader();
+      mtlLoaderLlanta44.setTexturePath('modelos/');
+      mtlLoaderLlanta44.setPath('modelos/');
+      mtlLoaderLlanta44.load('Rims&Tires.mtl', function (materials) {
+        materials.preload();
+        var objLoaderLlanta44 = new THREE.OBJLoader();
+        objLoaderLlanta44.setMaterials(materials);
+        objLoaderLlanta44.setPath('modelos/');
+        objLoaderLlanta44.load('Rims&Tires.obj', function (object) {
+          rin4.add(object);
+        });
+      });
       var llanta44 = new THREE.Mesh(llantaCoche,neumatic);
       llanta4.add(rin4);
       llanta4.add(llanta44);
@@ -936,18 +939,18 @@
       var cuadroLado = new THREE.Mesh(lateralParado1, metal);
       var cuadroLadoAtras = new THREE.Mesh(lateralCoche1, metal);
       var espejo = new THREE.Object3D();
-            var mtlLoaderEspejo1 = new THREE.MTLLoader();
-            mtlLoaderEspejo1.setTexturePath('modelos/');
-            mtlLoaderEspejo1.setPath('modelos/');
-            mtlLoaderEspejo1.load('espejo.mtl', function (materials) {
-                materials.preload();
-                var objLoaderEspejo1 = new THREE.OBJLoader();
-                objLoaderEspejo1.setMaterials(materials);
-                objLoaderEspejo1.setPath('modelos/');
-                objLoaderEspejo1.load('espejo.obj', function (object) {
-                    espejo.add(object);
-                });
-            });
+      var mtlLoaderEspejo1 = new THREE.MTLLoader();
+      mtlLoaderEspejo1.setTexturePath('modelos/');
+      mtlLoaderEspejo1.setPath('modelos/');
+      mtlLoaderEspejo1.load('espejo.mtl', function (materials) {
+        materials.preload();
+        var objLoaderEspejo1 = new THREE.OBJLoader();
+        objLoaderEspejo1.setMaterials(materials);
+        objLoaderEspejo1.setPath('modelos/');
+        objLoaderEspejo1.load('espejo.obj', function (object) {
+          espejo.add(object);
+        });
+      });
 
       var cuadroInferiorIzquierdo = new THREE.Mesh(lateralCoche1, metal);
       var cuadroSuperiorIzquierdo = new THREE.Mesh(lateralCocheArriba1,glassTexture);
@@ -956,46 +959,46 @@
       var cuadroLado1Atras = new THREE.Mesh(lateralCoche1, metal);
 
       var espejo2 = new THREE.Object3D();
-            var mtlLoaderEspejo2 = new THREE.MTLLoader();
-            mtlLoaderEspejo2.setTexturePath('modelos/');
-            mtlLoaderEspejo2.setPath('modelos/');
-            mtlLoaderEspejo2.load('espejoIzquierdo.mtl', function (materials) {
-                materials.preload();
-                var objLoaderEspejo2 = new THREE.OBJLoader();
-                objLoaderEspejo2.setMaterials(materials);
-                objLoaderEspejo2.setPath('modelos/');
-                objLoaderEspejo2.load('espejoIzquierdo.obj', function (object) {
-                    espejo2.add(object);
-                });
-            });
+      var mtlLoaderEspejo2 = new THREE.MTLLoader();
+      mtlLoaderEspejo2.setTexturePath('modelos/');
+      mtlLoaderEspejo2.setPath('modelos/');
+      mtlLoaderEspejo2.load('espejoIzquierdo.mtl', function (materials) {
+        materials.preload();
+        var objLoaderEspejo2 = new THREE.OBJLoader();
+        objLoaderEspejo2.setMaterials(materials);
+        objLoaderEspejo2.setPath('modelos/');
+        objLoaderEspejo2.load('espejoIzquierdo.obj', function (object) {
+          espejo2.add(object);
+        });
+      });
 
-       var manija = new THREE.Object3D();
-            var mtlLoaderManija = new THREE.MTLLoader();
-            mtlLoaderManija.setTexturePath('modelos/');
-            mtlLoaderManija.setPath('modelos/');
-            mtlLoaderManija.load('Manija.mtl', function (materials) {
-                materials.preload();
-                var objLoaderManija = new THREE.OBJLoader();
-                objLoaderManija.setMaterials(materials);
-                objLoaderManija.setPath('modelos/');
-                objLoaderManija.load('Manija.obj', function (object) {
-                    manija.add(object);
-                });
-            });
+      var manija = new THREE.Object3D();
+      var mtlLoaderManija = new THREE.MTLLoader();
+      mtlLoaderManija.setTexturePath('modelos/');
+      mtlLoaderManija.setPath('modelos/');
+      mtlLoaderManija.load('Manija.mtl', function (materials) {
+        materials.preload();
+        var objLoaderManija = new THREE.OBJLoader();
+        objLoaderManija.setMaterials(materials);
+        objLoaderManija.setPath('modelos/');
+        objLoaderManija.load('Manija.obj', function (object) {
+          manija.add(object);
+        });
+      });
 
-        var manija2 = new THREE.Object3D();
-            var mtlLoaderManija2 = new THREE.MTLLoader();
-            mtlLoaderManija2.setTexturePath('modelos/');
-            mtlLoaderManija2.setPath('modelos/');
-            mtlLoaderManija2.load('Manija.mtl', function (materials) {
-                materials.preload();
-                var objLoaderManija2 = new THREE.OBJLoader();
-                objLoaderManija2.setMaterials(materials);
-                objLoaderManija2.setPath('modelos/');
-                objLoaderManija2.load('Manija.obj', function (object) {
-                    manija2.add(object);
-                });
-            });          
+      var manija2 = new THREE.Object3D();
+      var mtlLoaderManija2 = new THREE.MTLLoader();
+      mtlLoaderManija2.setTexturePath('modelos/');
+      mtlLoaderManija2.setPath('modelos/');
+      mtlLoaderManija2.load('Manija.mtl', function (materials) {
+        materials.preload();
+        var objLoaderManija2 = new THREE.OBJLoader();
+        objLoaderManija2.setMaterials(materials);
+        objLoaderManija2.setPath('modelos/');
+        objLoaderManija2.load('Manija.obj', function (object) {
+          manija2.add(object);
+        });
+      });          
 
       puertaDerecha.add(cuadroInferiorDerecho);
       puertaDerecha.add(cuadroSuperiorDerecho);
@@ -1127,18 +1130,18 @@
       cuadrito3.scale.set(0.5,0.5,0.5);
 
       var motor = new THREE.Object3D();
-            var mtlLoaderLlanta33 = new THREE.MTLLoader();
-            mtlLoaderLlanta33.setTexturePath('modelos/');
-            mtlLoaderLlanta33.setPath('modelos/');
-            mtlLoaderLlanta33.load('dodgeengine.mtl', function (materials) {
-                materials.preload();
-                var objLoaderLlanta33 = new THREE.OBJLoader();
-                objLoaderLlanta33.setMaterials(materials);
-                objLoaderLlanta33.setPath('modelos/');
-                objLoaderLlanta33.load('dodgeengine.obj', function (object) {
-                    motor.add(object);
-                });
-            });
+      var mtlLoaderLlanta33 = new THREE.MTLLoader();
+      mtlLoaderLlanta33.setTexturePath('modelos/');
+      mtlLoaderLlanta33.setPath('modelos/');
+      mtlLoaderLlanta33.load('dodgeengine.mtl', function (materials) {
+        materials.preload();
+        var objLoaderLlanta33 = new THREE.OBJLoader();
+        objLoaderLlanta33.setMaterials(materials);
+        objLoaderLlanta33.setPath('modelos/');
+        objLoaderLlanta33.load('dodgeengine.obj', function (object) {
+          motor.add(object);
+        });
+      });
       motor.position.z+=10;
       motor.position.y+=5;
       motor.position.x+=27;  
@@ -1188,18 +1191,18 @@
       batea.position.x=-32;
 
       var manijita = new THREE.Object3D();
-            var mtlLoaderLlanta33 = new THREE.MTLLoader();
-            mtlLoaderLlanta33.setTexturePath('modelos/');
-            mtlLoaderLlanta33.setPath('modelos/');
-            mtlLoaderLlanta33.load('manijita.mtl', function (materials) {
-                materials.preload();
-                var objLoaderLlanta33 = new THREE.OBJLoader();
-                objLoaderLlanta33.setMaterials(materials);
-                objLoaderLlanta33.setPath('modelos/');
-                objLoaderLlanta33.load('manijita.obj', function (object) {
-                    manijita.add(object);
-                });
-            });
+      var mtlLoaderLlanta33 = new THREE.MTLLoader();
+      mtlLoaderLlanta33.setTexturePath('modelos/');
+      mtlLoaderLlanta33.setPath('modelos/');
+      mtlLoaderLlanta33.load('manijita.mtl', function (materials) {
+        materials.preload();
+        var objLoaderLlanta33 = new THREE.OBJLoader();
+        objLoaderLlanta33.setMaterials(materials);
+        objLoaderLlanta33.setPath('modelos/');
+        objLoaderLlanta33.load('manijita.obj', function (object) {
+          manijita.add(object);
+        });
+      });
 
       manijita.position.z+=16;
       manijita.position.x-=0.8;
@@ -1237,123 +1240,312 @@
                 objLoaderLlanta33.load('Ovni.obj', function (object) {
                     ovni.add(object);
                 });
-            });*/
-      
-      var loader = new THREE.TextureLoader();
-      var arbitroloader = new THREE.OBJLoader();
-        var ovni = new THREE.Object3D();
-        var textureper = new THREE.MeshLambertMaterial({
+              });*/
+
+              var loader = new THREE.TextureLoader();
+              var arbitroloader = new THREE.OBJLoader();
+              var ovni = new THREE.Object3D();
+              var textureper = new THREE.MeshLambertMaterial({
                 map: loader.load("modelos/Ovni.png")
-            });
-        arbitroloader.load(
-            'modelos/Ovni.obj ',
-            function (object) {
-                object.traverse(function (node) {
+              });
+              arbitroloader.load(
+                'modelos/Ovni.obj ',
+                function (object) {
+                  object.traverse(function (node) {
                     if (node.isMesh) node.material = textureper;
-                });
-                ovni.add(object);
+                  });
+                  ovni.add(object);
                 //per.scale.set(0.025,0.025,0.025);
                 //per.position.z=-5;
                 //per.rotation.x= THREE.Math.degToRad(-90);
                 //interior.add(per);  
-            }
-            
-        );      
+              }
+              );      
 
-     /* var cuerpoDron1 = new THREE.Mesh(cuerpoDron, whiteMetal);
+              var cuerpoDron1 = new THREE.Mesh(cuerpoDron, whiteMetal);
 
-      cuerpoDron1.rotation.x += 3.14161/2;
-      cuerpoDron1.position.y += 16;
-      cuerpoDron1.position.z += 20;
-      cuerpoDron1.position.x += 7;
+              cuerpoDron1.rotation.x += 3.14161/2;
+              cuerpoDron1.position.y += 16;
+              cuerpoDron1.position.z += 20;
+              cuerpoDron1.position.x += 7;
 
-      var alaDron1 = new THREE.Mesh(alaDron, whiteMetal);
+              var alaDron1 = new THREE.Mesh(alaDron, whiteMetal);
 
-      alaDron1.position.y+=16;
-      alaDron1.position.z+=15;
-      alaDron1.rotation.y+=-3.1416/4; 
+              alaDron1.position.y+=16;
+              alaDron1.position.z+=15;
+              alaDron1.rotation.y+=-3.1416/4; 
 
-      var alaDron2 = new THREE.Mesh(alaDron, whiteMetal);
+              var alaDron2 = new THREE.Mesh(alaDron, whiteMetal);
 
-      alaDron2.position.y+=16;
-      alaDron2.position.z+=25;
-      alaDron2.rotation.y+=3.1416/4;
+              alaDron2.position.y+=16;
+              alaDron2.position.z+=25;
+              alaDron2.rotation.y+=3.1416/4;
 
-      var alaDron3 = new THREE.Mesh(alaDron, whiteMetal);
+              var alaDron3 = new THREE.Mesh(alaDron, whiteMetal);
 
-      alaDron3.position.y+=16;
-      alaDron3.position.z+=15;
-      alaDron3.position.x+=14;
-      alaDron3.rotation.y+=3.1416/4;
+              alaDron3.position.y+=16;
+              alaDron3.position.z+=15;
+              alaDron3.position.x+=14;
+              alaDron3.rotation.y+=3.1416/4;
 
-      var alaDron4 = new THREE.Mesh(alaDron, whiteMetal);
+              var alaDron4 = new THREE.Mesh(alaDron, whiteMetal);
 
-      alaDron4.position.y+=16;
-      alaDron4.position.z+=25;
-      alaDron4.position.x+=14;
-      alaDron4.rotation.y+=-3.1416/4;
+              alaDron4.position.y+=16;
+              alaDron4.position.z+=25;
+              alaDron4.position.x+=14;
+              alaDron4.rotation.y+=-3.1416/4;
 
-      var helice11 = new THREE.Mesh(helicesDron, yellowMetal);
+              var helice11 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice11.position.y+=16.5;
-      helice11.position.z+=12;
-      helice11.position.x-=3;
-      helice11.rotation.y+=3.1416/2;
+              helice11.position.y+=16.5;
+              helice11.position.z+=12;
+              helice11.position.x-=3;
+              helice11.rotation.y+=3.1416/2;
 
-      var helice22 = new THREE.Mesh(helicesDron, yellowMetal);
+              var helice22 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice22.position.y+=16.5;
-      helice22.position.z+=29;
-      helice22.position.x-=3;
-      helice22.rotation.y+=3.1416/2;
+              helice22.position.y+=16.5;
+              helice22.position.z+=29;
+              helice22.position.x-=3;
+              helice22.rotation.y+=3.1416/2;
 
-      var helice33 = new THREE.Mesh(helicesDron, yellowMetal);
+              var helice33 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice33.position.y+=16.5;
-      helice33.position.z+=12;
-      helice33.position.x+=17;
-      helice33.rotation.y+=3.1416/2;
+              helice33.position.y+=16.5;
+              helice33.position.z+=12;
+              helice33.position.x+=17;
+              helice33.rotation.y+=3.1416/2;
 
-      var helice44 = new THREE.Mesh(helicesDron, yellowMetal);
+              var helice44 = new THREE.Mesh(helicesDron, yellowMetal);
 
-      helice44.position.y+=16.5;
-      helice44.position.z+=29;
-      helice44.position.x+=17;
-      helice44.rotation.y+=3.1416/2;
+              helice44.position.y+=16.5;
+              helice44.position.z+=29;
+              helice44.position.x+=17;
+              helice44.rotation.y+=3.1416/2;
 
-      helice1.add(helice11);
-      helice2.add(helice22);
-      helice3.add(helice33);
-      helice4.add(helice44);
+              helice1.add(helice11);
+              helice2.add(helice22);
+              helice3.add(helice33);
+              helice4.add(helice44);
 
-      dron.add(helice1);
-      dron.add(helice2);
-      dron.add(helice3);
-      dron.add(helice4);
-      dron.add(alaDron1);
-      dron.add(alaDron2);
-      dron.add(alaDron3);
-      dron.add(alaDron4);
-      dron.add(cuerpoDron1);
+              var pata1 = new THREE.Mesh(helicesDron, yellowMetal);
+              var pata2 = new THREE.Mesh(helicesDron, yellowMetal);
+              var pata3 = new THREE.Mesh(helicesDron, yellowMetal);
+              var pata4 = new THREE.Mesh(helicesDron, yellowMetal);
+              pata1.scale.set(.5,.5,1);
+              pata2.scale.set(.5,.5,1);
+              pata3.scale.set(.5,.5,1);
+              pata4.scale.set(.5,.5,1);
 
-      dron.position.z-=3;*/
+              pata1.rotation.z+=3.1416/2;
+              pata2.rotation.z+=3.1416/2;
+              pata3.rotation.z+=3.1416/2;
+              pata4.rotation.z+=3.1416/2;
 
-      ovni.position.y+=15;
-      ovni.position.x+=5;
-      ovni.position.z+=15;
-      ovni.scale.set(.02,.02,.02);
-      ovni.rotation.x-=3.1416/2;
+              pata1.position.y+=15;
+              pata1.position.z+=19;
+              pata1.position.x+=10;
 
-      coche.add(ovni);
-      coche.add(arribaCoche1);
-      coche.add(trunk);
-      coche.add(hood);
-      coche.add(llantas);
-      coche.add(lateralDerecho);
-      coche.add(lateralIzquierdo);
+              pata2.position.y+=15;
+              pata2.position.z+=21;
+              pata2.position.x+=10;
 
-      scene.add(coche);
-      coche.position.y=2.5;
+              pata3.position.y+=15;
+              pata3.position.z+=19;
+              pata3.position.x+=5;
+
+              pata4.position.y+=15;
+              pata4.position.z+=21;
+              pata4.position.x+=5;
+
+              dron.add(pata1);
+              dron.add(pata2);
+              dron.add(pata3);
+              dron.add(pata4);
+              dron.add(helice1);
+              dron.add(helice2);
+              dron.add(helice3);
+              dron.add(helice4);
+              dron.add(alaDron1);
+              dron.add(alaDron2);
+              dron.add(alaDron3);
+              dron.add(alaDron4);
+              dron.add(cuerpoDron1);
+
+              dron.position.z-=3;
+              dron.position.y+=2;
+
+              ovni.position.y+=2;
+              ovni.position.x-=20;
+              ovni.position.z+=15;
+              ovni.scale.set(.02,.02,.02);
+              ovni.rotation.x-=3.1416/2;
+
+              coche.add(ovni);
+              coche.add(dron);
+              coche.add(arribaCoche1);
+              coche.add(trunk);
+              coche.add(hood);
+              coche.add(llantas);
+              coche.add(lateralDerecho);
+              coche.add(lateralIzquierdo);
+
+              var loader = new THREE.TextureLoader();
+              var asientosTraserosloader = new THREE.OBJLoader();
+              var asientosTraseros = new THREE.Object3D();
+              var textureasientosTraseros = new THREE.MeshLambertMaterial({
+                map: loader.load("modelos/Asientos.png")
+              });
+              asientosTraserosloader.load(
+                'modelos/Asientos.obj ',
+                function (object) {
+                  object.traverse(function (node) {
+                    if (node.isMesh) node.material = textureasientosTraseros;
+                  });
+                  asientosTraseros.add(object);
+                //per.scale.set(0.025,0.025,0.025);
+                //per.position.z=-5;
+                //per.rotation.x= THREE.Math.degToRad(-90);
+                //interior.add(per);  
+              }
+              );
+
+              var loader = new THREE.TextureLoader();
+              var asientoAdelanteloader = new THREE.OBJLoader();
+              var asientoAdelante = new THREE.Object3D();
+              var textureasientoAdelante = new THREE.MeshLambertMaterial({
+                map: loader.load("modelos/AsientoAdelante.png")
+              });
+              asientoAdelanteloader.load(
+                'modelos/AsientoAdelante.obj ',
+                function (object) {
+                  object.traverse(function (node) {
+                    if (node.isMesh) node.material = textureasientosTraseros;
+                  });
+                  asientoAdelante.add(object);
+                //per.scale.set(0.025,0.025,0.025);
+                //per.position.z=-5;
+                //per.rotation.x= THREE.Math.degToRad(-90);
+                //interior.add(per);  
+              }
+              );
+
+              var loader = new THREE.TextureLoader();
+              var asientoAdelante1loader = new THREE.OBJLoader();
+              var asientoAdelante1 = new THREE.Object3D();
+              var textureasientoAdelante1 = new THREE.MeshLambertMaterial({
+                map: loader.load("modelos/AsientoAdelante.png")
+              });
+              asientoAdelante1loader.load(
+                'modelos/AsientoAdelante.obj ',
+                function (object) {
+                  object.traverse(function (node) {
+                    if (node.isMesh) node.material = textureasientosTraseros;
+                  });
+                  asientoAdelante1.add(object);
+                //per.scale.set(0.025,0.025,0.025);
+                //per.position.z=-5;
+                //per.rotation.x= THREE.Math.degToRad(-90);
+                //interior.add(per);  
+              }
+              );
+
+              var volante = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Volante.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Volante.obj', function (object) {
+                  volante.add(object);
+                });
+              });
+
+              asientosTraseros.scale.set(1.8,1.8,2.8);
+              asientosTraseros.rotation.x-=3.1416/2;
+              asientosTraseros.rotation.z+=3.1416/2;
+              asientosTraseros.position.z+=16;
+
+              asientoAdelante.scale.set(1.8,1.8,2.8);
+              asientoAdelante.rotation.x-=3.1416/2;
+              asientoAdelante.rotation.z+=3.1416/2;
+              asientoAdelante.position.z+=10;
+              asientoAdelante.position.x+=14;
+
+              asientoAdelante1.scale.set(1.8,1.8,2.8);
+              asientoAdelante1.rotation.x-=3.1416/2;
+              asientoAdelante1.rotation.z+=3.1416/2;
+              asientoAdelante1.position.z+=25;
+              asientoAdelante1.position.x+=14;
+              
+              volante.position.y+=8;
+              volante.position.z+=10;
+              volante.position.x+=20;
+              volante.rotation.x+=3.1416/3;
+              volante.rotation.y-=5*3.1416/6;
+              volante.rotation.z-=3.1416/2;
+
+              coche.add(asientosTraseros);
+              coche.add(asientoAdelante);
+              coche.add(asientoAdelante1);
+              coche.add(volante);
+
+              var placa1 = new THREE.Mesh(placa, placas);
+              placa1.position.y+=5;
+              placa1.position.x+=32.5;
+              placa1.position.z+=16.5;
+              placa1.rotation.y+=3.1416/2;
+              placa1.scale.set(.5,.5,.5);
+              coche.add(placa1);
+
+              var faro = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Faro.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Faro.obj', function (object) {
+                  faro.add(object);
+                });
+              });
+
+              var faro1 = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Faro.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Faro.obj', function (object) {
+                  faro1.add(object);
+                });
+              });
+
+              coche.add(faro);
+              coche.add(faro1);
+
+              faro.position.y+=4;
+              faro.position.x+=32.5;
+              faro.position.z+=5;
+              faro.rotation.z+=3.1416/2;
+              faro.scale.set(2,2,2);
+
+              faro1.position.y+=4;
+              faro1.position.x+=32.5;
+              faro1.position.z+=25;
+              faro1.rotation.z+=3.1416/2;
+              faro1.scale.set(2,2,2);
+
+              scene.add(coche);
+              coche.position.y=2.5;
 
       //Aqui declaro mis grupos de la rueda--------------------------------------------------------------------------------------------
       
@@ -1381,19 +1573,19 @@
       var cube10 = new THREE.Mesh(asiento, yellowMetal );
       var cube11 = new THREE.Mesh(asiento, yellowMetal );
 
-        cube.position.y=0; cube.position.x = 0; cube.position.z = 0;
-        cube1.position.y=0; cube1.position.x = 0; cube1.position.z = 0;
-        cube2.position.y=0; cube2.position.x = 0; cube2.position.z = 0;
-        cube3.position.y=0; cube3.position.x = 0; cube3.position.z = 0;
+      cube.position.y=0; cube.position.x = 0; cube.position.z = 0;
+      cube1.position.y=0; cube1.position.x = 0; cube1.position.z = 0;
+      cube2.position.y=0; cube2.position.x = 0; cube2.position.z = 0;
+      cube3.position.y=0; cube3.position.x = 0; cube3.position.z = 0;
 
-        cube6.position.y=-5; cube6.position.x = 0; cube6.position.z = 5;
-        cube6.rotation.x=3.1416/2;
-        cube7.position.y=-5; cube7.position.x = 0; cube7.position.z = 5;
-        cube7.rotation.x=3.1416/2;
-        cube8.position.y=-5; cube8.position.x = 0; cube8.position.z = 5;
-        cube8.rotation.x=3.1416/2;
-        cube9.position.y=-5; cube9.position.x = 0; cube9.position.z = 5;
-        cube9.rotation.x=3.1416/2;
+      cube6.position.y=-5; cube6.position.x = 0; cube6.position.z = 5;
+      cube6.rotation.x=3.1416/2;
+      cube7.position.y=-5; cube7.position.x = 0; cube7.position.z = 5;
+      cube7.rotation.x=3.1416/2;
+      cube8.position.y=-5; cube8.position.x = 0; cube8.position.z = 5;
+      cube8.rotation.x=3.1416/2;
+      cube9.position.y=-5; cube9.position.x = 0; cube9.position.z = 5;
+      cube9.rotation.x=3.1416/2;
 
       silla1.add(cube);
       silla1.add(cube6);
@@ -1421,9 +1613,9 @@
       sentar.add(silla4);
       sentar.position.z=-11;
 
-     sentar.position.y-=50;
-     sentar.position.x+=20;
-     aro.add(sentar);
+      sentar.position.y-=50;
+      sentar.position.x+=20;
+      aro.add(sentar);
 
       //Aro------------------------------------------------------------------
 
@@ -1433,22 +1625,22 @@
       var tubo12 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo14 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo16 = new THREE.Mesh(tuboRueda, blackMetal);
-  
+
       var torus = new THREE.Mesh( rueda1, purpleMetal);
 
-        tubo6.position.y=0; tubo6.position.x = 32; tubo6.position.z = -18;
-        tubo6.rotation.z=3.1416/2;
+      tubo6.position.y=0; tubo6.position.x = 32; tubo6.position.z = -18;
+      tubo6.rotation.z=3.1416/2;
 
-        tubo8.position.y=30; tubo8.position.x =0; tubo8.position.z = -18;
-        tubo8.rotation.z=3.1416;
+      tubo8.position.y=30; tubo8.position.x =0; tubo8.position.z = -18;
+      tubo8.rotation.z=3.1416;
 
-        tubo10.position.y=0; tubo10.position.x = -30; tubo10.position.z = -18;
-        tubo10.rotation.z=-3.1416/2;
+      tubo10.position.y=0; tubo10.position.x = -30; tubo10.position.z = -18;
+      tubo10.rotation.z=-3.1416/2;
 
-        tubo12.position.y=-32; tubo12.position.x = 0; tubo12.position.z = -18;
-                  
-    
-        torus.position.y=0; torus.position.x =0; torus.position.z = -18;
+      tubo12.position.y=-32; tubo12.position.x = 0; tubo12.position.z = -18;
+
+
+      torus.position.y=0; torus.position.x =0; torus.position.z = -18;
       
       aro.add(tubo6);
       aro.add(tubo8);
@@ -1474,18 +1666,18 @@
       var tubo6 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo7 = new THREE.Mesh(tuboRueda, blackMetal);
 
-        tubo.rotation.z = 60;
-        tubo2.rotation.z = -60;
-        tubo2.position.x = -42;
-        tubo3.rotation.x = 190;
-        tubo3.position.y = 50;
-        tubo3.position.x = -22;
-        tubo3.position.z = -25;
-        tubo4.rotation.z = 60;
-        tubo4.position.z = -48;
-        tubo5.position.z = -48;
-        tubo5.rotation.z = -60;
-        tubo5.position.x = -42;
+      tubo.rotation.z = 60;
+      tubo2.rotation.z = -60;
+      tubo2.position.x = -42;
+      tubo3.rotation.x = 190;
+      tubo3.position.y = 50;
+      tubo3.position.x = -22;
+      tubo3.position.z = -25;
+      tubo4.rotation.z = 60;
+      tubo4.position.z = -48;
+      tubo5.position.z = -48;
+      tubo5.rotation.z = -60;
+      tubo5.position.x = -42;
 
       estructura.add(tubo);
       estructura.add(tubo2);
@@ -1514,28 +1706,26 @@
     var cabezaCaballo = new THREE.BoxGeometry( 2,2,2);//Cabeza del caballo
 
     //Caballo 1---------------------------------------------------------------------------------------------------------
-    var cuerpo1 = new THREE.Mesh(cuerpoCaballo, blueMetal);
-    cuerpo1.position.y=0; cuerpo1.position.x=0; cuerpo1.position.z=0;
-    cuerpo1.rotation.z=3.1416/2;
-    var patas11 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas11.position.y-=3 ; patas11.position.x-=4; patas11.position.z=0;
-    var patas12 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas12.position.y-=3 ; patas12.position.x+=4; patas11.position.z=0;
-    var cola1 = new THREE.Mesh(colaCaballo, blueMetal);
-    cola1.position.y+=3; cola1.position.x+=5; cola1.position.z=0;
-    cola1.rotation.z=3*3.1416/4;
-    var cabeza1 = new THREE.Mesh(cabezaCaballo, purpleMetal);
-    cabeza1.position.y+=3; cabeza1.position.x-=5; cabeza1.position.z=0;
+    var caballo1 = new THREE.Object3D();
+              var mtlLoaderLlanta33 = new THREE.MTLLoader();
+              mtlLoaderLlanta33.setTexturePath('modelos/');
+              mtlLoaderLlanta33.setPath('modelos/');
+              mtlLoaderLlanta33.load('Triceratops.mtl', function (materials) {
+                materials.preload();
+                var objLoaderLlanta33 = new THREE.OBJLoader();
+                objLoaderLlanta33.setMaterials(materials);
+                objLoaderLlanta33.setPath('modelos/');
+                objLoaderLlanta33.load('Triceratops.obj', function (object) {
+                  caballo1.add(object);
+                });
+              });
 
-    caballo1.add(cuerpo1);
-    caballo1.add(patas11);
-    caballo1.add(patas12);  
-    caballo1.add(cola1); 
-    caballo1.add(cabeza1);
-    caballo1.position.y+=10; 
-    caballo1.position.z -=52;
+    caballo1.position.y+=5; 
+    caballo1.position.z-=52;
     caballo1.position.x+=23;
-    caballo1.rotation.y=2*3.1416;
+    caballo1.rotation.x=-3.1416/2;
+    caballo1.rotation.z-=3.1416/2;
+    caballo1.scale.set(.05,.05,.05);
     //scene.add(caballo1);
 
 
@@ -1655,8 +1845,8 @@
     carpa.add(carruselTubo4);
     //scene.add(carruselTubo4);
     var tuboBaseCarrusel = new THREE.Mesh(tuboBase, blueMetal);
-    tuboBaseCarrusel.position.x += 3; tuboBaseCarrusel.position.y += 20; tuboBaseCarrusel.position.z += 5;
-    carpa.add(tuboBaseCarrusel);
+    tuboBaseCarrusel.position.x += 153; tuboBaseCarrusel.position.y += 20; tuboBaseCarrusel.position.z += 25;
+    scene.add(tuboBaseCarrusel);
     //Creacion del piso ---------------------------------------------------------------------------------------------------------------
     var floorC = new THREE.Mesh(piso, pinkMetal);
     floorC.position.x += 3; floorC.position.y -= 3; floorC.position.z = 0;
@@ -1668,7 +1858,7 @@
     scene.add(carpa);
 
 
-  
+
       //Frisbee------------------------------------------------------------------------------------------------------------
       //Base---------------------------------------------------------------------------------------------------------------
       var tube = new THREE.Mesh(baseStructure, pinkMetal);
@@ -1768,7 +1958,7 @@
       frisbee.position.z = 150;
       //Agrego al scene frisbee----------------------------------------------------------------------------------------------
       scene.add(frisbee);
- 
+
 
 
       // add the group to the scene
@@ -1784,7 +1974,7 @@
       pointLight.position.x = 10;
       pointLight.position.y = 50;
       pointLight.position.z = 130;
-       
+
       // add to the scene
       scene.add(pointLight);
 
@@ -1816,7 +2006,7 @@
       var f=1;
 
       coche.position.z=zposCoche;
-        coche.position.x=xposCoche;
+      coche.position.x=xposCoche;
 
       var render = function() {
         requestAnimationFrame(render);
@@ -1831,28 +2021,29 @@
         silla3.rotation.z-=0.01;
         silla4.rotation.z-=0.01;
         if(a==200){
-        b=-0.01;
-        c=-1;
+          b=-0.01;
+          c=-1;
         }
         if(a==-200){
-        b=0.01
-        c=1;
+          b=0.01
+          c=1;
         }
         frisbeeClaw.rotation.x+=b;
         a+=c;  
         frisbeeDonut.rotation.y+=0.01;
         carpa.rotation.y+=0.005;
         if(d==5){
-        e=0.125;
-        f=-0.125;
+          e=0.125;
+          f=-0.125;
         }
         if(d==-5){
-        e=-0.125;
-        f=0.125;
+          e=-0.125;
+          f=0.125;
         }
         d+=f;  
         caballos1.position.y+=e; // Aqui ando trabajando 
         caballos2.position.y+=f;
+        tuboBaseCarrusel.rotation.y+=0.005;
 
         //Coche
         //Llantas
@@ -1864,13 +2055,19 @@
         llanta1.rotation.y=angleCoche;
         llanta2.rotation.y=angleCoche;
         if(dronboton==1){
-          ovni.rotation.z+=1;
-          while(ovni.position.y < 40)
-          ovni.position.y+=0.1;
+          ovni.rotation.z+=0.1;
+          helice11.rotation.y+=1;
+          helice22.rotation.y+=1;
+          helice33.rotation.y+=1;
+          helice44.rotation.y+=1;
+          while(ovni.position.y < 40){
+            ovni.position.y+=0.1;
+            dron.position.y+=0.1;
+          }
         }
         renderer.render(scene, camera);
       };
       render();
     </script>
   </body>
-</html>
+  </html>
