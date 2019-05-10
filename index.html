@@ -1573,6 +1573,17 @@
       var cube10 = new THREE.Mesh(asiento, yellowMetal );
       var cube11 = new THREE.Mesh(asiento, yellowMetal );
 
+      var cube11 = new THREE.Mesh(asiento, yellowMetal );
+      var cube22 = new THREE.Mesh(asiento, yellowMetal );
+      var cube33 = new THREE.Mesh(asiento, yellowMetal );
+      var cube44 = new THREE.Mesh(asiento, yellowMetal );
+
+      var cube111 = new THREE.Mesh(asiento, yellowMetal );
+      var cube222 = new THREE.Mesh(asiento, yellowMetal );
+      var cube333 = new THREE.Mesh(asiento, yellowMetal );
+      var cube444 = new THREE.Mesh(asiento, yellowMetal );
+      
+
       cube.position.y=0; cube.position.x = 0; cube.position.z = 0;
       cube1.position.y=0; cube1.position.x = 0; cube1.position.z = 0;
       cube2.position.y=0; cube2.position.x = 0; cube2.position.z = 0;
@@ -1587,23 +1598,49 @@
       cube9.position.y=-5; cube9.position.x = 0; cube9.position.z = 5;
       cube9.rotation.x=3.1416/2;
 
+      cube11.position.y=0; cube11.position.x = -4.5; cube11.position.z = 5;
+      cube11.rotation.y=3.1416/2;
+      cube22.position.y=0; cube22.position.x = -4.5; cube22.position.z = 5;
+      cube22.rotation.y=3.1416/2;
+      cube33.position.y=0; cube33.position.x = -4.5; cube33.position.z = 5;
+      cube33.rotation.y=3.1416/2;
+      cube44.position.y=0; cube44.position.x = -4.5; cube44.position.z = 5;
+      cube44.rotation.y=3.1416/2;
+
+      cube111.position.y=0; cube111.position.x = 4.5; cube111.position.z = 5;
+      cube111.rotation.y=3.1416/2;
+      cube222.position.y=0; cube222.position.x = 4.5; cube222.position.z = 5;
+      cube222.rotation.y=3.1416/2;
+      cube333.position.y=0; cube333.position.x = 4.5; cube333.position.z = 5;
+      cube333.rotation.y=3.1416/2;
+      cube444.position.y=0; cube444.position.x = 4.5; cube444.position.z = 5;
+      cube444.rotation.y=3.1416/2;
+
       silla1.add(cube);
       silla1.add(cube6);
+      silla1.add(cube11);
+      silla1.add(cube111);
       silla1.position.y=45;
       silla1.position.x=-75;
       
       silla2.add(cube1);
       silla2.add(cube7);
+      silla2.add(cube22);
+      silla2.add(cube222);
       silla2.position.y=105;
       silla2.position.x=-20;
       
       silla3.add(cube2);
       silla3.add(cube8);
+      silla3.add(cube33);
+      silla3.add(cube333);
       silla3.position.y=-10;
       silla3.position.x=-20;
 
       silla4.add(cube3);
       silla4.add(cube9);
+      silla4.add(cube44);
+      silla4.add(cube444);
       silla4.position.y=50;
       silla4.position.x=40;
 
